@@ -89,7 +89,7 @@ A self-updating job board reading directly from the Greenhouse, Lever, Ashby, an
 
 <div align="center">
 
-Outside of ML/AIOps work, I try to turn my ideas into reality, currently building the best fighting game and my own OS.
+Outside of ML/AIOps work, I try to turn my ideas into reality, currently building my dream fighting game and my own automated OS.
 
 **Let's talk AIOps, MLOps, or anything you're building** — [LinkedIn](https://linkedin.com/in/awonaziz) · [Portfolio](https://awonaziz.github.io) · [awonaziz786@gmail.com](mailto:awonaziz786@gmail.com)
 
