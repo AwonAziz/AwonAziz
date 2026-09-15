@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=500&size=26&duration=3000&pause=1200&color=22D3EE&center=true&vCenter=true&width=650&lines=Hi+there%2C+I+am+Awon+%F0%9F%91%8B;AI+and+MLOps+Engineer;Building+systems+that+keep+ML+running" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=500&size=26&duration=3000&pause=1200&color=22D3EE&center=true&vCenter=true&width=650&lines=Hi+there%2C+I+am+Awon;AI+and+MLOps+Engineer;Building+systems+that+keep+ML+running" alt="Typing SVG" />
 
 **Entry-level AI/MLOps engineer focused on the operational side of ML — drift detection, model lifecycle automation, and AI-assisted incident response.**
 
