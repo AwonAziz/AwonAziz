@@ -1,6 +1,8 @@
 # Awon Aziz
 
-**AI/ML Engineer — I build the operational half of machine learning: evaluation, drift detection, and promotion gates.**
+**AI/MLOps Engineer — I build the operational half of machine learning: evaluation, drift detection, and promotion gates.**
+
+→ **[awonaziz.github.io](https://awonaziz.github.io)** — the portfolio, with a written case study for each system below.
 
 A model isn't finished when it trains well. It's finished when you can prove it still works, detect when it stops, and
 refuse to promote a replacement that only looks better. That's the part I work on.
@@ -11,6 +13,18 @@ than expected.
 ---
 
 ## Pinned work
+
+### [eval-analytics-platform](https://github.com/AwonAziz/eval-analytics-platform)
+Six evaluation questions that are painful in a notebook and trivial in SQL, over a **DuckDB star schema** fed by every
+project's artefacts. 141 hermetic tests, 5 versioned migrations, 17 charts.
+
+Every row carries a **`data_origin`** label, so a generated figure can never be read as a measured one — filter to
+`data_origin = 'real'` and only observed numbers remain. The **quality gate fails CI** rather than warning in it, and its
+fifth check is the one that matters: *analytical coverage*. Fewer than two arms, fewer than two quantisations, or a
+missing slice family makes all six analyses quietly meaningless while every individual query still returns rows.
+
+Rejected rows are counted with machine-readable error codes rather than tolerated, and editing an applied migration
+raises instead of letting the schema drift away from what CI built.
 
 ### [from-scratch-to-served](https://github.com/AwonAziz/from-scratch-to-served)
 LoRA fine-tuning built on a **hand-written NumPy autodiff**, exported to ONNX, quantised to INT8, served behind FastAPI.
@@ -76,7 +90,8 @@ after injected drift. Champion at **F1 0.873 / AUC 0.937** on the project's own 
   shell command.**
 - **[cleanjobfunnel](https://github.com/AwonAziz/cleanjobfunnel)** — has run unattended across 18 job boards reading
   Greenhouse, Lever, Ashby and SmartRecruiters directly, refreshed every ~20 minutes by a scheduled workflow and
-  published to a live dashboard. 476 commits. Built to run my own search, no scraping, no middleman board.
+  published to a live dashboard. **590 commits, 587 of them automated, 3 human.** Built to run my own search, no
+  scraping, no middleman board.
 - **Infrastructure labs** — 200+ hands-on commits across
   [DevOps & CI/CD](https://github.com/AwonAziz/Devops-CICD-labs),
   [Red Hat Linux](https://github.com/AwonAziz/RedHat-Linux-Labs) and
@@ -85,8 +100,16 @@ after injected drift. Champion at **F1 0.873 / AUC 0.937** on the project's own 
 ## How I work
 
 I would rather ship a small system I can measure than a large one I can't. Every project here reports what broke and why —
-the LSA regression, the six calibration bugs, the two bugs inside `from-scratch-to-served` — because a repository that only
-shows its successes teaches the wrong lesson.
+the LSA regression, the six calibration bugs, the three bugs inside `from-scratch-to-served` — because a repository that
+only shows its successes teaches the wrong lesson.
+
+The three in `from-scratch-to-served` are the ones I would point at first. A cross-entropy implementation used
+`logits - log(softmax(logits))`, which collapses to a per-row constant: **loss fell smoothly while accuracy stayed at
+chance**, because argmax is scale-invariant. Gradient checking did not catch it — my analytic and numerical gradients
+agreed to 1e-10, because both were differentiating the same wrong function. Then signed INT8 quantisation took the model
+to 0.2610 accuracy, which is chance, until sweeping eight configurations found unsigned per-channel holding 0.9280. And
+`inject_lora(targets=('q_proj','v_proj'))` silently matched nothing on DistilBERT, which calls them `q_lin` and `v_lin` —
+the run completed, reported 92% validation accuracy, and was in fact a linear probe wearing a LoRA label.
 
 ## Background
 
