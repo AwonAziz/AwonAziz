@@ -1,6 +1,6 @@
 ![Awon Aziz — AI/MLOps Engineer](./assets/matrix-dark.svg)
 
-![Awon Aziz ID badge](./assets/lanyard.svg)
+![Awon Aziz — System Terminal](./assets/terminal.svg)
 
 ### 🚀 What I Build
 
