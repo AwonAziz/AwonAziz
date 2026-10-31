@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="40" viewBox="0 0 1200 40">
+  <defs>
+    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="20%" stop-color="#0366d6">
+        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#c5ff4a">
+        <animate attributeName="stop-color" values="#c5ff4a;#b6e835;#c5ff4a" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="80%" stop-color="#0366d6">
+        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="2" fill="url(#divGrad)" />
+  <circle cx="600" cy="20" r="4" fill="#c5ff4a">
+    <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="fill-opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+</svg>

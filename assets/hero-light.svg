@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240" role="img" aria-labelledby="title desc">
+  <title id="title">Awon Aziz — AI/MLOps Engineer</title>
+  <desc id="desc">Animated hero banner for GitHub profile README. Light theme.</desc>
+  <defs>
+    <linearGradient id="heroGradLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0366d6">
+        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#c5ff4a">
+        <animate attributeName="stop-color" values="#c5ff4a;#b6e835;#c5ff4a" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#0366d6">
+        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <filter id="glowLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1200" height="240" fill="#ffffff" rx="16" />
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="1120" height="160" fill="url(#heroGradLight)" rx="12" opacity="0.92">
+      <animate attributeName="opacity" values="0.85;1;0.85" dur="4s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="100" cy="80" r="20" fill="#c5ff4a" filter="url(#glowLight)">
+      <animate attributeName="r" values="16;24;16" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="fill-opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <rect x="920" y="40" width="120" height="80" fill="#ffffff" rx="8" opacity="0.95" />
+    <rect x="180" y="96" width="4" height="32" fill="#c5ff4a" />
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,-4;0,0" dur="3s" repeatCount="indefinite" />
+  </g>
+</svg>
