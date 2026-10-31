@@ -1,93 +1,96 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/hero-dark.svg" />
-  <img src="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/hero-light.svg" alt="Hero banner — Awon Aziz, AI/MLOps Engineer" width="100%" />
-</picture>
+![Awon Aziz — AI/MLOps Engineer](./assets/banner.svg)
 
-# Awon Aziz
+![Awon Aziz ID badge](./assets/lanyard.svg)
 
-**AI/MLOps Engineer — I build the operational half of machine learning: evaluation, drift detection, and promotion gates.**
+### 🚀 What I Build
 
-→ **[awonaziz.github.io](https://awonaziz.github.io)** — the portfolio, with a written case study for each system below.
+| Focus Area | Tech |
+|------------|------|
+| 🎯 **MLOps & LLM Eval** | `Python` `PyTorch` `ONNX` `FastAPI` |
+| 📊 **Drift Detection** | `Evidently AI` `MLflow` `DuckDB` |
+| 🔄 **Promotion Gates** | `Chroma` `Kubernetes` `GitHub Actions` |
+| ⚙️ **Serving & Infra** | `Docker` `SQL` `AWS` `Azure` `GCP` |
 
-A model isn't finished when it trains well. It's finished when you can prove it still works, detect when it stops, and refuse to promote a replacement that only looks better. That's the part I work on.
+> 💜 *"I build the operational half of machine learning."*
 
-Every repository ships with tests, a CI run, and numbers I measured myself — including the ones that came out worse than expected.
+![Awon Aziz — About Me](./assets/aboutme.svg)
 
----
+### 🌐 Connect With Me
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg" />
-  <img src="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg" alt="Divider" width="100%" />
-</picture>
+[![Instagram](https://img.shields.io/badge/Instagram-8A2BE2?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/awonaziz)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-6A11CB?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/awonaziz/)
+[![Email](https://img.shields.io/badge/Email-9D4EDD?style=for-the-badge&logo=Gmail&logoColor=white)](mailto:awonaziz786@gmail.com)
 
-## 🎯 About me
+### 💻 Tech Stack
 
-- 🔭 **Currently building:** `eval-analytics-platform` — six evaluation questions that are painful in a notebook and trivial in SQL, over a DuckDB star schema fed by every project's artefacts. 141 hermetic tests, 5 versioned migrations, 17 charts.
-- 🌱 **Learning:** Advanced TypeScript type-level programming and production LLM eval harnesses.
-- 💬 **Ask me about:** MLOps promotion gates, drift detection, LoRA calibration, and why most "LLM agents" shouldn't auto-execute.
-- ⚡ **Outside code:** Urban sketching, mechanical keyboards, and running my own job-board aggregation pipeline (590 commits, 587 automated).
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org)
+[![ONNX](https://img.shields.io/badge/ONNX-5EEAD4?style=for-the-badge)](https://onnx.ai)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![MLflow](https://img.shields.io/badge/MLflow-C471ED?style=for-the-badge)](https://mlflow.org)
+[![DuckDB](https://img.shields.io/badge/DuckDB-61DAFB?style=for-the-badge)](https://duckdb.org)
+[![Chroma](https://img.shields.io/badge/Chroma-C471ED?style=for-the-badge)](https://trychroma.com)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![Evidently AI](https://img.shields.io/badge/Evidently_AI-C471ED?style=for-the-badge)](https://evidentlyai.com)
+[![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
+[![Azure](https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com)
+[![GCP](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com)
+[![SQL](https://img.shields.io/badge/SQL-4ADE80?style=for-the-badge)](https://postgresql.org)
 
----
+### 🎨 Frontend Development
 
-## 🛠 Tech stack
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org)
+[![CSS3](https://img.shields.io/badge/CSS3-264DE4?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
-**Languages:** Python · TypeScript · SQL · Shell  
-**ML / AI:** PyTorch · Hugging Face · ONNX · CrewAI · LangChain  
-**MLOps / Deploy:** Docker · FastAPI · MLflow · Kubernetes · GitHub Actions  
-**Cloud / Infra:** AWS · Azure · GCP · Red Hat Linux  
-**Data:** DuckDB · Chroma · SQLite · Evidently AI
+### ⚙️ Backend & Databases
 
----
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
+[![Express](https://img.shields.io/badge/Express-9AA4B2?style=for-the-badge)](https://expressjs.com)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge)](https://supabase.com)
 
-## 📦 Featured work
+### 🐳 DevOps & Cloud Infrastructure
 
-| Project | What it does | Outcome |
-|---------|-------------|---------|
-| **[eval-analytics-platform](https://github.com/AwonAziz/eval-analytics-platform)** | Six evaluation questions over a DuckDB star schema, with `data_origin` labelling so generated figures can never be read as measured. | 141 hermetic tests · 5 migrations · 17 charts · quality gate fails CI on analytical coverage |
-| **[from-scratch-to-served](https://github.com/AwonAziz/from-scratch-to-served)** | LoRA fine-tuning on hand-written NumPy autodiff, exported to ONNX, quantised to INT8, served via FastAPI. | 0.9217 vs 0.9295 full FT on 1.1% of weights · LoRA better calibrated (ECE 0.0180 vs 0.0306) · INT8 67.8 MB vs 268.6 MB |
-| **[llm-drift-monitor](https://github.com/AwonAziz/llm-drift-monitor)** | Embedding, output-quality, and LLM-as-judge drift tracking with 6 signals where effect size sets severity. | 184 tests · 4 CI jobs · 6 calibration bugs pinned by regression tests |
-| **[Hybrid-retrieval](https://github.com/AwonAziz/Hybrid-retrieval)** | Sparse TF-IDF + dense retrieval fused with Reciprocal Rank Fusion over Chroma, feeding a two-agent root-cause copilot. | 8-case golden harness · corpus-size trust gate caught and fixed an LSA fallback regression |
-| **[ml-lifecycle-platform](https://github.com/AwonAziz/ml-lifecycle-platform)** | MLflow-tracked training, FastAPI serving, champion/challenger promotion gated on measured F1 gain. | F1 0.873 / AUC 0.937 · under 5 ms p99 · mean PSI 1.66 across five features after injected drift |
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com)
+[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)](https://jenkins.io)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![GitLab CI](https://img.shields.io/badge/GitLab_CI-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com)
 
----
+### 🛠️ Tools & Workflow
 
-## 🔧 Also here
+[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+[![GitLab](https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com)
+[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge)](https://postman.com)
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com)
+[![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com)
 
-- **[ai-incident-response-system](https://github.com/AwonAziz/ai-incident-response-system)** — multi-cloud Isolation Forest anomaly detection over AWS, Azure, GCP telemetry, extended by **[agentic-incident-copilot](https://github.com/AwonAziz/agentic-incident-copilot)** with Chroma knowledge base, hybrid retrieval, two CrewAI agents, human-review UI, and Kubernetes manifests.
-- **[AI-Pair-Engineer](https://github.com/AwonAziz/AI-Pair-Engineer)** — four-stage review pipeline where each stage receives only upstream findings relevant to its job; every model response schema-validated with retry-and-correct; submitted code never executed or shell-interpolated.
-- **[cleanjobfunnel](https://github.com/AwonAziz/cleanjobfunnel)** — unattended aggregation across 18 job boards (Greenhouse, Lever, Ashby, SmartRecruiters), refreshed ~20 min via scheduled workflow, published to live dashboard. No scraping, no middleman board.
-- **Infrastructure labs** — 200+ hands-on commits across [DevOps & CI/CD](https://github.com/AwonAziz/Devops-CICD-labs), [Red Hat Linux](https://github.com/AwonAziz/RedHat-Linux-Labs), and [Cybersecurity](https://github.com/AwonAziz/Cybersecurity-labs).
+![Stats divider](./assets/divider.svg)
 
----
+### 📊 GitHub Stats & Graphs
 
-## 💬 How I work
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=AwonAziz&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true)
+![Top languages](https://github-readme-stats.vercel.app/api/top-langs?username=AwonAziz&theme=tokyonight&hide_border=true&layout=compact)
 
-I'd rather ship a small system I can measure than a large one I can't. Every project reports what broke and why — the LSA regression, the six calibration bugs, the three bugs inside `from-scratch-to-served` — because a repository that only shows its successes teaches the wrong lesson.
+![GitHub Streak](https://streak-stats.demolab.com/?user=AwonAziz&theme=tokyonight&hide_border=true&ring=C471ED&fire=FF6EC7&currStreakLabel=9B6BFF&sideLabels=C471ED&sideNums=5EEAD4&dates=9AA4B2)
 
----
+![Contribution graph](https://github-readme-activity-graph.vercel.app/graph?username=AwonAziz&theme=tokyo-night&color=C471ED&line=8B5CF6&point=FF6EC7&area=true&area_color=9B6BFF&hide_border=true&custom_title=Contribution%20Graph)
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg" />
-  <img src="https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg" alt="Divider" width="100%" />
-</picture>
+### 🐍 Watch the snake eat my contributions
 
-## 📊 Activity
+![Contribution snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
 
-![GitHub stats](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/stats/overview.svg)
-![Top languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/stats/languages.svg)
+![Profile views](https://komarev.com/ghpvc/?username=AwonAziz&color=8A2BE2&style=for-the-badge&label=PROFILE+VIEWS)
 
----
+*⭐️ Always learning, always building.* 💜
 
-## 🎓 Background
-
-Diploma in Artificial Intelligence Operations — EduQual (UK), RQF Level 6 (bachelor's-level equivalent), Al Nafi International Colleges, 2026 — 90%.
-
----
-
-## 📫 Let's connect
-
-Islamabad, Pakistan — open to remote (EU or US overlap) and relocation to UAE, Saudi Arabia, Qatar, UK or EU.
-
-[awonaziz786@gmail.com](mailto:awonaziz786@gmail.com) · [linkedin.com/in/awonaziz](https://www.linkedin.com/in/awonaziz) · +92 335 5528211
-
-Open to MLOps and AI engineering roles. [Book a chat](https://calendly.com/awonaziz) or email me directly.
+![Footer wave](./assets/divider.svg)
