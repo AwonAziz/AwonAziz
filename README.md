@@ -1,4 +1,4 @@
-![Awon Aziz — AI/MLOps Engineer](./assets/banner.svg)
+![Awon Aziz — AI/MLOps Engineer](./assets/matrix-dark.svg)
 
 ![Awon Aziz ID badge](./assets/lanyard.svg)
 
@@ -25,7 +25,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org)
-[![ONNX](https://img.shields.io/badge/ONNX-5EEAD4?style=for-the-badge)](https://onnx.ai)
+[![ONNX](https://img.shields.io/badge/ONNX-00AA00?style=for-the-badge)](https://onnx.ai)
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![MLflow](https://img.shields.io/badge/MLflow-C471ED?style=for-the-badge)](https://mlflow.org)
 [![DuckDB](https://img.shields.io/badge/DuckDB-61DAFB?style=for-the-badge)](https://duckdb.org)
@@ -37,7 +37,7 @@
 [![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
 [![Azure](https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com)
 [![GCP](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://cloud.google.com)
-[![SQL](https://img.shields.io/badge/SQL-4ADE80?style=for-the-badge)](https://postgresql.org)
+[![SQL](https://img.shields.io/badge/SQL-00AA00?style=for-the-badge)](https://postgresql.org)
 
 ### 🎨 Frontend Development
 
@@ -74,7 +74,7 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com)
 [![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com)
 
-![Stats divider](./assets/divider.svg)
+![Divider](./assets/divider.svg)
 
 ### 📊 GitHub Stats & Graphs
 

@@ -1,23 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="40" viewBox="0 0 1200 40">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" width="1200" height="40">
   <defs>
-    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="transparent" />
-      <stop offset="20%" stop-color="#0366d6">
-        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="5s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="50%" stop-color="#c5ff4a">
-        <animate attributeName="stop-color" values="#c5ff4a;#b6e835;#c5ff4a" dur="5s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="80%" stop-color="#0366d6">
-        <animate attributeName="stop-color" values="#0366d6;#2f81f7;#0366d6" dur="5s" repeatCount="indefinite" />
-      </stop>
-      <stop offset="100%" stop-color="transparent" />
-    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="1200" height="2" fill="url(#divGrad)" />
-  <circle cx="600" cy="20" r="4" fill="#c5ff4a">
-    <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite" />
-    <animate attributeName="fill-opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+
+  <rect width="100%" height="100%" fill="none"/>
+
+  <line x1="40" y1="20" x2="1160" y2="20" stroke="#00ff41" stroke-width="1.5" opacity="0.35" stroke-dasharray="1000,1000">
+    <animate attributeName="stroke-dashoffset" values="1000;0" dur="2s" repeatCount="indefinite"/>
+  </line>
+
+  <circle cx="600" cy="20" r="4" fill="#00ff41" filter="url(#glow)">
+    <animate attributeName="r" values="2;6;2" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="fill-opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
   </circle>
+
+  <text x="40" y="32" font-family="'Courier New', monospace" font-size="11" fill="#00aa00" fill-opacity="0.6">/// system online</text>
+  <text x="1160" y="32" font-family="'Courier New', monospace" font-size="11" fill="#00aa00" fill-opacity="0.6" text-anchor="end">/// matrix active</text>
 </svg>

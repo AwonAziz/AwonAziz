@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="Matrix digital rain — Awon Aziz, AI/MLOps Engineer">
+  <title>Matrix rain — Awon Aziz</title>
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#000000"/>
+
+  <rect width="100%" height="100%" fill="url(#scan)"/>
+
+  <!-- Column 1 -->
+  <text x="100" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="3.0s" begin="-1.0s" repeatCount="indefinite"/>
+    <tspan x="100" dy="22" fill="#e0ffe0" filter="url(#glow)">K</tspan>
+    <tspan x="100" dy="22" fill="#00ff41" fill-opacity="0.85">3</tspan>
+    <tspan x="100" dy="22" fill="#008f00" fill-opacity="0.60">L</tspan>
+    <tspan x="100" dy="22" fill="#004f00" fill-opacity="0.35">9</tspan>
+    <tspan x="100" dy="22" fill="#002a00" fill-opacity="0.15">J</tspan>
+  </text>
+
+  <!-- Column 2 -->
+  <text x="240" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="3.8s" begin="-2.3s" repeatCount="indefinite"/>
+    <tspan x="240" dy="22" fill="#e0ffe0" filter="url(#glow)">日</tspan>
+    <tspan x="240" dy="22" fill="#00ff41" fill-opacity="0.85">ﾊ</tspan>
+    <tspan x="240" dy="22" fill="#008f00" fill-opacity="0.60">7</tspan>
+    <tspan x="240" dy="22" fill="#004f00" fill-opacity="0.35">ｲ</tspan>
+    <tspan x="240" dy="22" fill="#002a00" fill-opacity="0.15">Z</tspan>
+  </text>
+
+  <!-- Column 3 -->
+  <text x="380" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="2.6s" begin="-0.6s" repeatCount="indefinite"/>
+    <tspan x="380" dy="22" fill="#e0ffe0" filter="url(#glow)">ｼ</tspan>
+    <tspan x="380" dy="22" fill="#00ff41" fill-opacity="0.85">N</tspan>
+    <tspan x="380" dy="22" fill="#008f00" fill-opacity="0.60">2</tspan>
+    <tspan x="380" dy="22" fill="#004f00" fill-opacity="0.35">ｯ</tspan>
+    <tspan x="380" dy="22" fill="#002a00" fill-opacity="0.15">M</tspan>
+  </text>
+
+  <!-- Column 4 -->
+  <text x="520" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="4.2s" begin="-3.5s" repeatCount="indefinite"/>
+    <tspan x="520" dy="22" fill="#e0ffe0" filter="url(#glow)">P</tspan>
+    <tspan x="520" dy="22" fill="#00ff41" fill-opacity="0.85">Q</tspan>
+    <tspan x="520" dy="22" fill="#008f00" fill-opacity="0.60">R</tspan>
+    <tspan x="520" dy="22" fill="#004f00" fill-opacity="0.35">S</tspan>
+    <tspan x="520" dy="22" fill="#002a00" fill-opacity="0.15">T</tspan>
+  </text>
+
+  <!-- Column 5 -->
+  <text x="660" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="3.4s" begin="-1.8s" repeatCount="indefinite"/>
+    <tspan x="660" dy="22" fill="#e0ffe0" filter="url(#glow)">U</tspan>
+    <tspan x="660" dy="22" fill="#00ff41" fill-opacity="0.85">V</tspan>
+    <tspan x="660" dy="22" fill="#008f00" fill-opacity="0.60">W</tspan>
+    <tspan x="660" dy="22" fill="#004f00" fill-opacity="0.35">X</tspan>
+    <tspan x="660" dy="22" fill="#002a00" fill-opacity="0.15">Y</tspan>
+  </text>
+
+  <!-- Column 6 -->
+  <text x="800" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="4.6s" begin="-4.0s" repeatCount="indefinite"/>
+    <tspan x="800" dy="22" fill="#e0ffe0" filter="url(#glow)">Z</tspan>
+    <tspan x="800" dy="22" fill="#00ff41" fill-opacity="0.85">0</tspan>
+    <tspan x="800" dy="22" fill="#008f00" fill-opacity="0.60">1</tspan>
+    <tspan x="800" dy="22" fill="#004f00" fill-opacity="0.35">2</tspan>
+    <tspan x="800" dy="22" fill="#002a00" fill-opacity="0.15">3</tspan>
+  </text>
+
+  <!-- Column 7 -->
+  <text x="940" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="3.1s" begin="-0.9s" repeatCount="indefinite"/>
+    <tspan x="940" dy="22" fill="#e0ffe0" filter="url(#glow)">4</tspan>
+    <tspan x="940" dy="22" fill="#00ff41" fill-opacity="0.85">5</tspan>
+    <tspan x="940" dy="22" fill="#008f00" fill-opacity="0.60">6</tspan>
+    <tspan x="940" dy="22" fill="#004f00" fill-opacity="0.35">7</tspan>
+    <tspan x="940" dy="22" fill="#002a00" fill-opacity="0.15">8</tspan>
+  </text>
+
+  <!-- Column 8 -->
+  <text x="1080" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="22" fill="#00ff41" text-anchor="middle">
+    <animateTransform attributeName="transform" type="translate" from="0,-132" to="0,320" dur="3.9s" begin="-2.7s" repeatCount="indefinite"/>
+    <tspan x="1080" dy="22" fill="#e0ffe0" filter="url(#glow)">9</tspan>
+    <tspan x="1080" dy="22" fill="#00ff41" fill-opacity="0.85">:</tspan>
+    <tspan x="1080" dy="22" fill="#008f00" fill-opacity="0.60">*</tspan>
+    <tspan x="1080" dy="22" fill="#004f00" fill-opacity="0.35">+</tspan>
+    <tspan x="1080" dy="22" fill="#002a00" fill-opacity="0.15">-</tspan>
+  </text>
+
+  <!-- Overlay wordmark -->
+  <text x="600" y="135" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="40" font-weight="bold" fill="#00ff41" text-anchor="middle" filter="url(#glow)" letter-spacing="4">Awon Aziz</text>
+  <text x="600" y="170" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="16" fill="#00aa00" text-anchor="middle" letter-spacing="2">AI/MLOps Engineer</text>
+  <text x="600" y="195" font-family="'Courier New', 'Noto Sans Mono', monospace" font-size="13" fill="#006600" text-anchor="middle" letter-spacing="1">eval &#8226; drift &#8226; promotion gates</text>
+
+  <!-- bottom scanline -->
+  <rect x="0" y="294" width="1200" height="6" fill="#00ff41" opacity="0.4"/>
+</svg>
