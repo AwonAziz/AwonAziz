@@ -1,11 +1,11 @@
 ![Awon Aziz — AI/MLOps Engineer](./assets/matrix-dark.svg)
 
-![Awon Aziz — System Terminal](./assets/terminal.svg)
+![System Terminal](./assets/terminal.svg)
 
 ### 🚀 What I Build
 
-| Focus Area | Tech |
-|------------|------|
+| Focus Area | Tech Stack |
+|------------|------------|
 | 🎯 **MLOps & LLM Eval** | `Python` `PyTorch` `ONNX` `FastAPI` |
 | 📊 **Drift Detection** | `Evidently AI` `MLflow` `DuckDB` |
 | 🔄 **Promotion Gates** | `Chroma` `Kubernetes` `GitHub Actions` |
@@ -13,7 +13,7 @@
 
 > 💜 *"I build the operational half of machine learning."*
 
-![Awon Aziz — About Me](./assets/aboutme.svg)
+![About Me](./assets/aboutme.svg)
 
 ### 🌐 Connect With Me
 
@@ -44,7 +44,7 @@
 [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F2C?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org)
 [![CSS3](https://img.shields.io/badge/CSS3-264DE4?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 
@@ -78,19 +78,17 @@
 
 ### 📊 GitHub Stats & Graphs
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=AwonAziz&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true)
-![Top languages](https://github-readme-stats.vercel.app/api/top-langs?username=AwonAziz&theme=tokyonight&hide_border=true&layout=compact)
-
-![GitHub Streak](https://streak-stats.demolab.com/?user=AwonAziz&theme=tokyonight&hide_border=true&ring=C471ED&fire=FF6EC7&currStreakLabel=9B6BFF&sideLabels=C471ED&sideNums=5EEAD4&dates=9AA4B2)
-
-![Contribution graph](https://github-readme-activity-graph.vercel.app/graph?username=AwonAziz&theme=tokyo-night&color=C471ED&line=8B5CF6&point=FF6EC7&area=true&area_color=9B6BFF&hide_border=true&custom_title=Contribution%20Graph)
+![Stats Overview](./assets/stats-overview.svg)
+![Languages](./assets/languages.svg)
+![Streak](./assets/streak.svg)
+![Contribution Graph](./assets/contribution-graph.svg)
 
 ### 🐍 Watch the snake eat my contributions
 
-![Contribution snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
+![Contribution Snake](./assets/contribution-graph.svg)
 
-![Profile views](https://komarev.com/ghpvc/?username=AwonAziz&color=8A2BE2&style=for-the-badge&label=PROFILE+VIEWS)
+![Profile Views](https://komarev.com/ghpvc/?username=AwonAziz&color=8A2BE2&style=for-the-badge&label=PROFILE+VIEWS)
 
 *⭐️ Always learning, always building.* 💜
 
-![Footer wave](./assets/divider.svg)
+![Footer Wave](./assets/divider.svg)

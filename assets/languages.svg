@@ -1,0 +1,52 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+  <defs>
+    <linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#langBg)" rx="8"/>
+  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
+
+  <!-- Header -->
+  <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
+  <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TOP LANGUAGES</text>
+
+  <!-- Language bars -->
+  <g transform="translate(20, 62)">
+    <!-- Python -->
+    <rect x="0" y="0" width="260" height="18" rx="3" fill="#001a00" stroke="#3776AB" stroke-width="1"/>
+    <rect x="0" y="0" width="260" height="18" rx="3" fill="#3776AB" opacity="0.9"/>
+    <text x="6" y="14" font-size="11" fill="#000000" font-weight="bold">Python</text>
+    <text x="330" y="14" font-size="11" fill="#00ff41" text-anchor="end">45%</text>
+
+    <rect x="0" y="28" width="180" height="18" rx="3" fill="#001a00" stroke="#EE4C2C" stroke-width="1"/>
+    <rect x="0" y="28" width="180" height="18" rx="3" fill="#EE4C2C" opacity="0.9"/>
+    <text x="6" y="42" font-size="11" fill="#000000" font-weight="bold">PyTorch</text>
+    <text x="330" y="42" font-size="11" fill="#00ff41" text-anchor="end">32%</text>
+
+    <rect x="0" y="56" width="140" height="18" rx="3" fill="#001a00" stroke="#00AA00" stroke-width="1"/>
+    <rect x="0" y="56" width="140" height="18" rx="3" fill="#00AA00" opacity="0.9"/>
+    <text x="6" y="70" font-size="11" fill="#000000" font-weight="bold">ONNX</text>
+    <text x="330" y="70" font-size="11" fill="#00ff41" text-anchor="end">25%</text>
+
+    <rect x="0" y="84" width="100" height="18" rx="3" fill="#001a00" stroke="#009688" stroke-width="1"/>
+    <rect x="0" y="84" width="100" height="18" rx="3" fill="#009688" opacity="0.9"/>
+    <text x="6" y="98" font-size="11" fill="#000000" font-weight="bold">FastAPI</text>
+    <text x="330" y="98" font-size="11" fill="#00ff41" text-anchor="end">18%</text>
+
+    <rect x="0" y="112" width="80" height="18" rx="3" fill="#001a00" stroke="#C471ED" stroke-width="1"/>
+    <rect x="0" y="112" width="80" height="18" rx="3" fill="#C471ED" opacity="0.9"/>
+    <text x="6" y="126" font-size="11" fill="#000000" font-weight="bold">SQL</text>
+    <text x="330" y="126" font-size="11" fill="#00ff41" text-anchor="end">14%</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="20" y="168" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="180" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
+</svg>
