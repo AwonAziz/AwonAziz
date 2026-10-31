@@ -1,6 +1,6 @@
-![Awon Aziz — AI/MLOps Engineer](./assets/matrix-dark.svg)
+![Awon Aziz — AI/MLOps Engineer](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/matrix-dark.svg)
 
-![System Terminal](./assets/terminal.svg)
+![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg)
 
 ### 🚀 What I Build
 
@@ -13,7 +13,7 @@
 
 > 💜 *"I build the operational half of machine learning."*
 
-![About Me](./assets/aboutme.svg)
+![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg)
 
 ### 🌐 Connect With Me
 
@@ -74,21 +74,21 @@
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://figma.com)
 [![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com)
 
-![Divider](./assets/divider.svg)
+![Divider](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg)
 
 ### 📊 GitHub Stats & Graphs
 
-![Stats Overview](./assets/stats-overview.svg)
-![Languages](./assets/languages.svg)
-![Streak](./assets/streak.svg)
-![Contribution Graph](./assets/contribution-graph.svg)
+![Stats Overview](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/stats-overview.svg)
+![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg)
+![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg)
+![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg)
 
-### 🐍 Watch the snake eat my contributions
+### 🐍 Contribution Snake
 
-![Contribution Snake](./assets/contribution-graph.svg)
+![Contribution Snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
 
 ![Profile Views](https://komarev.com/ghpvc/?username=AwonAziz&color=8A2BE2&style=for-the-badge&label=PROFILE+VIEWS)
 
 *⭐️ Always learning, always building.* 💜
 
-![Footer Wave](./assets/divider.svg)
+![Footer Wave](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg)
