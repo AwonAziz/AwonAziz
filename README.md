@@ -1,6 +1,6 @@
 ![Awon Aziz — AI/MLOps Engineer](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/matrix-dark.svg?v=2)
 
-![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg?v=3)
+![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg?v=4)
 
 ![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=6)
 
