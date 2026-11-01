@@ -1,21 +1,6 @@
 ![Awon Aziz — AI/MLOps Engineer](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/matrix-dark.svg?v=2)
 
-![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg?v=2)
-
-```text
-root@awon:~# cat about.md
-```
-
-### 🎯 What I Build
-
-| Module | Stack |
-|--------|-------|
-| `MLOps & LLM Eval` | `Python` `PyTorch` `ONNX` `FastAPI` `MLflow` |
-| `Drift Detection` | `Evidently AI` `MLflow` `DuckDB` |
-| `Promotion Gates` | `Chroma` `Kubernetes` `GitHub Actions` |
-| `Serving & Infra` | `Docker` `SQL` `AWS` `Azure` `GCP` |
-
-> `I build the operational half of machine learning.`
+![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg?v=3)
 
 ![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=6)
 
