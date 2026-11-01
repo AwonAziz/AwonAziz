@@ -10,7 +10,7 @@ root@awon:~# cat about.md
 
 | Module | Stack |
 |--------|-------|
-| `MLOps & LLM Eval` | `Python` `PyTorch` `ONNX` `FastAPI` |
+| `MLOps & LLM Eval` | `Python` `PyTorch` `ONNX` `FastAPI` `MLflow` |
 | `Drift Detection` | `Evidently AI` `MLflow` `DuckDB` |
 | `Promotion Gates` | `Chroma` `Kubernetes` `GitHub Actions` |
 | `Serving & Infra` | `Docker` `SQL` `AWS` `Azure` `GCP` |
@@ -37,13 +37,81 @@ root@awon:~# cat stack.md
 
 ### 💻 Tech Stack
 
-| Category | Technologies |
-|----------|-------------|
-| `ML / AI` | `Python` `PyTorch` `ONNX` `FastAPI` `MLflow` `DuckDB` `Chroma` `Evidently AI` |
-| `Frontend` | `React` `JavaScript` `TypeScript` `HTML5` `CSS3` `Tailwind CSS` |
-| `Backend` | `Node.js` `Express` `MongoDB` `MySQL` `Firebase` `Supabase` |
-| `DevOps / Cloud` | `Docker` `Kubernetes` `AWS` `Azure` `GCP` `GitHub Actions` `GitLab CI` |
-| `Tools` | `Git` `GitHub` `GitLab` `Postman` `Figma` `VS Code` |
+```text
+═══════════════════════════════════════════════════════════════════════════════
+                            TECHNICAL COMPETENCY MATRIX
+═══════════════════════════════════════════════════════════════════════════════
+
+  [▓█] PYTHON                    ─────────────── [██████████░░░] 85%
+          Primary language for ML/Ops, scripting, automation
+          Frameworks: FastAPI, PyTorch, DuckDB, MLflow, Evidently
+
+  [▓█] TYPESCRIPT                ─────────────── [████████░░░░] 75%
+          Type-safe frontend and backend development
+          Frameworks: React, Next.js, Express, Node.js
+
+  [▓█] REACT / NEXT.JS           ─────────────── [████████░░░░] 75%
+          Component-based UI, SSR/SSG, full-stack React applications
+          Ecosystem: Tailwind CSS, TypeScript, Framer Motion
+
+  [▓█] FASTAPI                   ─────────────── [██████████░░] 80%
+          High-performance Python API framework
+          Async/await, OpenAPI auto-generation, dependency injection
+
+  [▓█] PYTORCH                   ─────────────── [█████████░░░] 80%
+          Deep learning framework, tensor computation
+          Model training, fine-tuning, inference pipelines
+
+  [▓█] HUGGING FACE              ─────────────── [████████░░░░] 75%
+          Transformer models, tokenizers, datasets
+          Model hub integration, fine-tuning, evaluation
+
+  [▓█] POSTGRESQL                ─────────────── [██████████░░] 80%
+          Relational database, ACID transactions
+          Advanced indexing, JSONB, connection pooling
+
+  [▓█] REDIS                     ─────────────── [████████░░░░] 75%
+          In-memory data store, caching layer
+          Pub/sub, session management, rate limiting
+
+  [▓█] QDRANT                    ─────────────── [████████░░░░] 75%
+          Vector database for similarity search
+          Embedding storage, hybrid search, payload filtering
+
+  [▓█] MLFLOW                    ─────────────── [██████████░░] 80%
+          Experiment tracking, model registry
+          Deployment, lineage, artifacts
+
+  [▓█] DOCKER                    ─────────────── [██████████░░] 80%
+          Containerization, multi-stage builds
+          Docker Compose, image optimization, security
+
+  [▓█] KUBERNETES                ─────────────── [████████░░░░] 75%
+          Container orchestration, deployment management
+          Helm charts, services, ingress, config maps
+
+  [▓█] AWS                       ─────────────── [██████████░░] 80%
+          Cloud infrastructure, EC2, S3, Lambda
+          IAM, CloudWatch, VPC, Route 53
+
+  [▓█] TERRAFORM                 ─────────────── [████████░░░░] 75%
+          Infrastructure as Code, state management
+          Provider configuration, modules, workspaces
+
+  [▓█] GIT / GITHUB ACTIONS      ─────────────── [██████████░░] 80%
+          Version control, CI/CD pipelines
+          Branching strategies, automated testing, deployment
+
+═══════════════════════════════════════════════════════════════════════════════
+
+  CATEGORY KEY:
+  ████████████████████  Expert (90%+)
+  ████████████████████░  Advanced (80-89%)
+  ████████████████████░░  Proficient (70-79%)
+  ████████████████████░░░  Intermediate (60-69%)
+
+═══════════════════════════════════════════════════════════════════════════════
+```
 
 ![Divider](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg?v=2)
 
@@ -57,8 +125,6 @@ root@awon:~# cat stats.md
 ![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg?v=2)
 ![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg?v=2)
 ![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg?v=2)
-
-![Contribution Snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
 
 ```text
 root@awon:~# cat views.md
