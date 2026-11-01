@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution Streak — Awon Aziz" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace">
   <title>Contribution Streak — Awon Aziz</title>
   <defs>
@@ -22,16 +23,12 @@
       <rect width="4" height="2" fill="#00ff41" opacity="0.03"/>
     </pattern>
   </defs>
-
-  <!-- Background -->
   <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
   <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
   <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
-
-  <!-- Border -->
   <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
 
-  <!-- Matrix rain strip (right side, subtle) -->
+    <!-- Matrix rain strip (right side, subtle) -->
   <g opacity="0.10" transform="translate(360, 40)">
     <text x="0" y="0" font-size="8" fill="#00ff41">
       <animate attributeName="y" values="-40;140" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
@@ -49,7 +46,7 @@
     </text>
   </g>
 
-  <!-- Title bar -->
+    <!-- Title bar -->
   <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
   <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
   <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">CONTRIBUTION STREAK</text>
@@ -63,17 +60,14 @@
 
   <!-- Stats rows -->
   <g transform="translate(16, 44)">
-    <!-- CURRENT STREAK -->
     <text x="0" y="16" font-size="10" fill="#00aa00" letter-spacing="0.5">CURRENT STREAK</text>
     <text x="368" y="16" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
     <line x1="0" y1="22" x2="368" y2="22" stroke="#003300" stroke-width="0.5"/>
 
-    <!-- LONGEST STREAK -->
     <text x="0" y="40" font-size="10" fill="#00aa00" letter-spacing="0.5">LONGEST STREAK</text>
     <text x="368" y="40" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
     <line x1="0" y1="46" x2="368" y2="46" stroke="#003300" stroke-width="0.5"/>
 
-    <!-- TOTAL CONTRIBUTIONS -->
     <text x="0" y="64" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL CONTRIBUTIONS</text>
     <text x="368" y="64" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">18 repos</text>
     <line x1="0" y1="70" x2="368" y2="70" stroke="#003300" stroke-width="0.5"/>
@@ -88,7 +82,7 @@
     <text x="20" y="13" font-size="10" fill="#FF6EC7" font-weight="bold">MLOps Engineer</text>
   </g>
 
-  <!-- Footer -->
+    <!-- Footer -->
   <rect x="16" y="156" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="167" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">PROFILE: ISLAMABAD, PK</text>
+  <text x="200" y="167" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">PROFILE: Islamabad, PK</text>
 </svg>

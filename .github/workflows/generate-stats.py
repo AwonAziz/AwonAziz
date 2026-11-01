@@ -8,11 +8,27 @@ import json
 import os
 import urllib.request
 import urllib.error
-from datetime import datetime, timedelta, timezone
 
 USERNAME = "AwonAziz"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUTPUT_DIR = "assets"
+
+FONT_STACK = "'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace"
+
+LANG_COLORS = {
+    "Python": "#3776AB",
+    "TypeScript": "#3178C6",
+    "JavaScript": "#F7DF1E",
+    "Shell": "#00AA00",
+    "HTML": "#E34F26",
+    "CSS": "#F7DF1E",
+    "Jupyter Notebook": "#C471ED",
+    "Go": "#00ADD8",
+    "Rust": "#DEA584",
+    "Java": "#B07219",
+    "C++": "#F34B7D",
+    "Ruby": "#701516",
+}
 
 
 def api_get(path):
@@ -55,7 +71,6 @@ def fetch_languages(repos):
         lang_url = r.get("languages_url")
         if not lang_url:
             continue
-        # languages_url is a full URL, extract path
         if lang_url.startswith("https://api.github.com/repos/"):
             path = lang_url.replace("https://api.github.com", "")
             langs = api_get(path)
@@ -64,64 +79,124 @@ def fetch_languages(repos):
     return lang_bytes
 
 
-def number_format(n):
-    """Format numbers with K/M suffix."""
-    if n >= 1_000_000:
-        return f"{n / 1_000_000:.1f}M"
-    if n >= 1_000:
-        return f"{n / 1_000:.1f}K"
-    return str(n)
-
-
 def esc(text):
     """XML-escape text."""
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    if not text:
+        return ""
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def svg_defs():
+    """Common SVG defs block."""
+    return '''  <defs>
+    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="hexGrid" width="40" height="35" patternUnits="userSpaceOnUse">
+      <path d="M20,0 L40,10 L40,25 L20,35 L0,25 L0,10 Z" fill="none" stroke="#00ff41" stroke-opacity="0.04" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="scanline" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#00ff41" opacity="0.03"/>
+    </pattern>
+  </defs>'''
+
+
+def matrix_rain_strip(x, y_start, height):
+    """Generate matrix rain strip SVG."""
+    return f'''  <!-- Matrix rain strip (right side, subtle) -->
+  <g opacity="0.10" transform="translate({x}, {y_start})">
+    <text x="0" y="0" font-size="8" fill="#00ff41">
+      <animate attributeName="y" values="-40;{height}" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
+      <tspan x="0" dy="10">1</tspan>
+      <tspan x="0" dy="10">0</tspan>
+      <tspan x="0" dy="10">1</tspan>
+      <tspan x="0" dy="10">0</tspan>
+    </text>
+    <text x="12" y="0" font-size="8" fill="#00ff41">
+      <animate attributeName="y" values="-50;{height}" dur="3s" begin="-0.8s" calcMode="discrete" repeatCount="indefinite"/>
+      <tspan x="12" dy="10">0</tspan>
+      <tspan x="12" dy="10">1</tspan>
+      <tspan x="12" dy="10">0</tspan>
+      <tspan x="12" dy="10">1</tspan>
+    </text>
+  </g>'''
+
+
+def title_bar(title, subtitle, width=400):
+    """Generate title bar SVG."""
+    return f'''  <!-- Title bar -->
+  <rect x="1" y="1" width="{width - 2}" height="28" rx="8" fill="#001a00" opacity="0.8"/>
+  <rect x="1" y="1" width="{width - 2}" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
+  <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">{title}</text>
+  <text x="{width - 20}" y="20" font-size="9" fill="#00aa00" text-anchor="end" letter-spacing="1">{subtitle}</text>
+
+  <!-- Accent line under title -->
+  <line x1="16" y1="34" x2="{width - 16}" y2="34" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
+  <rect x="16" y="33" width="80" height="2" fill="#00ff41" opacity="0.8">
+    <animate attributeName="width" values="0;80" dur="1s" begin="0.01s" fill="freeze"/>
+  </rect>'''
+
+
+def footer_bar(text, width=400, y=0):
+    """Generate footer bar SVG."""
+    return f'''  <!-- Footer -->
+  <rect x="16" y="{y}" width="{width - 32}" height="14" rx="3" fill="#001a00" opacity="0.5"/>
+  <text x="{width // 2}" y="{y + 11}" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">{text}</text>'''
 
 
 def generate_stats_overview(user, repos):
     """Generate stats-overview.svg with real data."""
     total_stars = sum(r.get("stargazers_count", 0) for r in repos)
     total_forks = sum(r.get("forks_count", 0) for r in repos)
-    total_commits = sum(r.get("size", 0) for r in repos)  # size is KB, not commits - use stars+forks as proxy
-    open_issues = sum(r.get("open_issues_count", 0) for r in repos)
     public_repos = user.get("public_repos", len(repos))
     followers = user.get("followers", 0)
 
-    svg = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
-  <defs>
-    <linearGradient id="statsBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#050505"/>
-    </linearGradient>
-    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#statsBg)" rx="8"/>
-  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
-  <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">GITHUB STATS</text>
-  <text x="350" y="33" font-size="10" fill="#00aa00" text-anchor="end">{esc(USERNAME)}</text>
-  <g transform="translate(20, 52)">
-    <text x="0" y="22" font-size="11" fill="#00aa00">PUBLIC REPOS</text>
-    <text x="340" y="22" font-size="16" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos}</text>
-    <line x1="0" y1="30" x2="360" y2="30" stroke="#003300" stroke-width="1"/>
-    <text x="0" y="58" font-size="11" fill="#00aa00">TOTAL STARS</text>
-    <text x="340" y="58" font-size="16" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_stars}</text>
-    <line x1="0" y1="66" x2="360" y2="66" stroke="#003300" stroke-width="1"/>
-    <text x="0" y="94" font-size="11" fill="#00aa00">TOTAL FORKS</text>
-    <text x="340" y="94" font-size="16" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_forks}</text>
-    <line x1="0" y1="102" x2="360" y2="102" stroke="#003300" stroke-width="1"/>
-    <text x="0" y="130" font-size="11" fill="#00aa00">FOLLOWERS</text>
-    <text x="340" y="130" font-size="16" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{followers}</text>
-    <line x1="0" y1="138" x2="360" y2="138" stroke="#003300" stroke-width="1"/>
+    body = f'''
+  {matrix_rain_strip(360, 40, 200)}
+
+  {title_bar("GITHUB STATS", esc(USERNAME).upper())}
+
+  <!-- Stats rows -->
+  <g transform="translate(16, 44)">
+    <text x="0" y="16" font-size="10" fill="#00aa00" letter-spacing="0.5">PUBLIC REPOS</text>
+    <text x="368" y="16" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos}</text>
+    <line x1="0" y1="22" x2="368" y2="22" stroke="#003300" stroke-width="0.5"/>
+
+    <text x="0" y="40" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL STARS</text>
+    <text x="368" y="40" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_stars}</text>
+    <line x1="0" y1="46" x2="368" y2="46" stroke="#003300" stroke-width="0.5"/>
+
+    <text x="0" y="64" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL FORKS</text>
+    <text x="368" y="64" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_forks}</text>
+    <line x1="0" y1="70" x2="368" y2="70" stroke="#003300" stroke-width="0.5"/>
+
+    <text x="0" y="88" font-size="10" fill="#00aa00" letter-spacing="0.5">FOLLOWERS</text>
+    <text x="368" y="88" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{followers}</text>
+    <line x1="0" y1="94" x2="368" y2="94" stroke="#003300" stroke-width="0.5"/>
   </g>
-  <rect x="20" y="204" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="216" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">SYSTEM OPERATIONAL</text>
+
+  {footer_bar("SYSTEM OPERATIONAL", 400, 216)}
 </svg>'''
-    return svg
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GitHub Stats — Awon Aziz" font-family="{FONT_STACK}">
+  <title>GitHub Stats — Awon Aziz</title>
+{svg_defs()}
+  <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
+{body}'''
 
 
 def generate_languages(lang_bytes):
@@ -131,212 +206,243 @@ def generate_languages(lang_bytes):
 
     total = sum(lang_bytes.values())
     sorted_langs = sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:6]
+    colors = ["#3776AB", "#3178C6", "#00AA00", "#E34F26", "#C471ED", "#F7DF1E"]
 
     bars = []
-    y = 64  # Start below header (header ends at y=40, add padding)
-    bar_height = 18
-    bar_spacing = 30
-    colors = ["#3776AB", "#EE4C2C", "#00AA00", "#009688", "#C471ED", "#F7DF1E"]
+    y = 14
+    bar_spacing = 24
     for i, (lang, bytes_count) in enumerate(sorted_langs):
         pct = bytes_count / total * 100 if total > 0 else 0
-        bar_width = int(260 * bytes_count / max(lang_bytes.values())) if lang_bytes.values() else 100
+        bar_width = int(368 * bytes_count / max(lang_bytes.values())) if lang_bytes.values() else 100
         color = colors[i % len(colors)]
         bars.append(f'''
-    <rect x="0" y="{y}" width="{bar_width}" height="{bar_height}" rx="3" fill="#001a00" stroke="{color}" stroke-width="1"/>
-    <rect x="0" y="{y}" width="{bar_width}" height="{bar_height}" rx="3" fill="{color}" opacity="0.9"/>
-    <text x="6" y="{y + 14}" font-size="11" fill="#000000" font-weight="bold">{esc(lang)}</text>
-    <text x="330" y="{y + 14}" font-size="11" fill="#00ff41" text-anchor="end">{pct:.0f}%</text>''')
+    <text x="0" y="{y}" font-size="10" fill="#5eead4" font-weight="bold">{esc(lang)}</text>
+    <text x="368" y="{y}" font-size="9" fill="#00ff41" text-anchor="end">{pct:.0f}%</text>
+    <rect x="0" y="{y + 4}" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="{y + 4}" width="0" height="6" rx="3" fill="{color}" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;{bar_width}" dur="{1.0 + i * 0.1:.1f}s" begin="{0.01 + i * 0.1:.2f}s" fill="freeze"/>
+    </rect>''')
         y += bar_spacing
 
-    footer_y = y + 10
+    footer_y = 44 + y + 4
 
-    svg = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="{footer_y + 34}" viewBox="0 0 400 {footer_y + 34}" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
-  <defs>
-    <linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#050505"/>
-    </linearGradient>
-    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#langBg)" rx="8"/>
-  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
-  <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TOP LANGUAGES</text>
-  {''.join(bars)}
-  <rect x="20" y="{footer_y}" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="{footer_y + 12}" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
+    body = f'''
+  {matrix_rain_strip(360, 40, 240)}
+
+  {title_bar("TOP LANGUAGES", "REAL DATA")}
+
+  <!-- Language bars -->
+  <g transform="translate(16, 44)">
+    {''.join(bars)}
+  </g>
+
+  {footer_bar("MACHINE LEARNING FOCUS", 400, footer_y)}
 </svg>'''
-    return svg
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="{footer_y + 18}" viewBox="0 0 400 {footer_y + 18}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top Languages — Awon Aziz" font-family="{FONT_STACK}">
+  <title>Top Languages — Awon Aziz</title>
+{svg_defs()}
+  <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
+{body}'''
 
 
 def generate_streak(user):
     """Generate streak.svg with real data."""
-    followers = user.get("followers", 0)
     public_repos = user.get("public_repos", 0)
+    bio = esc(user.get("bio") or "MLOps Engineer")
+    location = esc(user.get("location") or "Islamabad, PK")
 
-    svg = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
-  <defs>
-    <linearGradient id="streakBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#050505"/>
-    </linearGradient>
-    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#streakBg)" rx="8"/>
-  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
-  <rect x="20" y="14" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="28" y="31" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">CONTRIBUTION STREAK</text>
-  <g transform="translate(20, 54)">
-    <text x="0" y="22" font-size="11" fill="#00aa00">CURRENT STREAK</text>
-    <text x="380" y="22" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <text x="0" y="52" font-size="11" fill="#00aa00">LONGEST STREAK</text>
-    <text x="380" y="52" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <text x="0" y="82" font-size="11" fill="#00aa00">TOTAL CONTRIBUTIONS</text>
-    <text x="380" y="82" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos} repos</text>
+    body = f'''
+  {matrix_rain_strip(360, 40, 140)}
+
+  {title_bar("CONTRIBUTION STREAK", "STATUS")}
+
+  <!-- Stats rows -->
+  <g transform="translate(16, 44)">
+    <text x="0" y="16" font-size="10" fill="#00aa00" letter-spacing="0.5">CURRENT STREAK</text>
+    <text x="368" y="16" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
+    <line x1="0" y1="22" x2="368" y2="22" stroke="#003300" stroke-width="0.5"/>
+
+    <text x="0" y="40" font-size="10" fill="#00aa00" letter-spacing="0.5">LONGEST STREAK</text>
+    <text x="368" y="40" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
+    <line x1="0" y1="46" x2="368" y2="46" stroke="#003300" stroke-width="0.5"/>
+
+    <text x="0" y="64" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL CONTRIBUTIONS</text>
+    <text x="368" y="64" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos} repos</text>
+    <line x1="0" y1="70" x2="368" y2="70" stroke="#003300" stroke-width="0.5"/>
   </g>
-  <g transform="translate(20, 112)">
-    <circle cx="10" cy="8" r="6" fill="#FF6EC7" filter="url(#matrixGlow)">
-      <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite"/>
+
+  <!-- Status indicator -->
+  <g transform="translate(16, 124)">
+    <circle cx="8" cy="8" r="5" fill="#FF6EC7" filter="url(#softGlow)">
+      <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <text x="24" y="14" font-size="11" fill="#FF6EC7" font-weight="bold">{esc(user.get('bio') or 'MLOps Engineer')}</text>
+    <text x="20" y="13" font-size="10" fill="#FF6EC7" font-weight="bold">{bio}</text>
   </g>
-  <rect x="20" y="152" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="164" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PROFILE: {esc(user.get('location') or 'Islamabad, PK')}</text>
+
+  {footer_bar(f"PROFILE: {location}", 400, 156)}
 </svg>'''
-    return svg
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution Streak — Awon Aziz" font-family="{FONT_STACK}">
+  <title>Contribution Streak — Awon Aziz</title>
+{svg_defs()}
+  <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
+{body}'''
 
 
 def generate_contribution_graph():
     """Generate contribution-graph.svg with a real-time style grid."""
-    svg = '''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
-  <defs>
-    <linearGradient id="graphBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#050505"/>
-    </linearGradient>
-    <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#graphBg)" rx="8"/>
-  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
-  <rect x="20" y="14" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="28" y="31" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">CONTRIBUTION GRAPH</text>
-  <g transform="translate(300, 44)">
-    <rect x="0" y="0" width="10" height="10" fill="#0d0713"/>
-    <text x="14" y="9" font-size="9" fill="#00aa00">0</text>
-    <rect x="30" y="0" width="10" height="10" fill="#004f00"/>
-    <text x="44" y="9" font-size="9" fill="#00aa00">1</text>
-    <rect x="60" y="0" width="10" height="10" fill="#008f00"/>
-    <text x="74" y="9" font-size="9" fill="#00aa00">2</text>
-    <rect x="90" y="0" width="10" height="10" fill="#00ff41"/>
-    <text x="104" y="9" font-size="9" fill="#00aa00">3</text>
-    <rect x="120" y="0" width="10" height="10" fill="#00ff41" filter="url(#matrixGlow)"/>
-    <text x="134" y="9" font-size="9" fill="#00ff41" font-weight="bold">4</text>
+    body = f'''
+  {matrix_rain_strip(360, 40, 150)}
+
+  {title_bar("CONTRIBUTION GRAPH", "PAST YEAR")}
+
+  <!-- Legend -->
+  <g transform="translate(16, 42)">
+    <rect x="0" y="0" width="8" height="8" fill="#0d0713" stroke="#003300" stroke-width="0.5"/>
+    <text x="12" y="8" font-size="8" fill="#00aa00">0</text>
+    <rect x="30" y="0" width="8" height="8" fill="#004f00"/>
+    <text x="42" y="8" font-size="8" fill="#00aa00">1</text>
+    <rect x="60" y="0" width="8" height="8" fill="#008f00"/>
+    <text x="72" y="8" font-size="8" fill="#00aa00">2</text>
+    <rect x="90" y="0" width="8" height="8" fill="#00ff41"/>
+    <text x="102" y="8" font-size="8" fill="#00aa00">3</text>
+    <rect x="120" y="0" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)"/>
+    <text x="132" y="8" font-size="8" fill="#00ff41" font-weight="bold">4</text>
   </g>
-  <g transform="translate(20, 64)">
+
+  <!-- Contribution grid -->
+  <g transform="translate(16, 58)">
     <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="10" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="20" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
+      <rect x="0" y="0" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="9" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="18" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
         <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
       </rect>
-      <rect x="0" y="30" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="40" width="8" height="8" fill="#002a00"/>
-      <rect x="0" y="50" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="60" width="8" height="8" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="36" width="7" height="7" fill="#002a00"/>
+      <rect x="0" y="45" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="54" width="7" height="7" fill="#0d0713"/>
     </g>
-    <g transform="translate(12, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="10" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="20" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
+    <g transform="translate(9, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="9" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="18" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
         <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
       </rect>
-      <rect x="0" y="30" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="40" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="50" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="60" width="8" height="8" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="36" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="45" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="54" width="7" height="7" fill="#0d0713"/>
     </g>
-    <g transform="translate(24, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#002a00"/>
-      <rect x="0" y="10" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="20" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="30" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
+    <g transform="translate(18, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#002a00"/>
+      <rect x="0" y="9" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="18" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="27" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
         <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
       </rect>
-      <rect x="0" y="40" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="50" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="60" width="8" height="8" fill="#0d0713"/>
+      <rect x="0" y="36" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="45" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="54" width="7" height="7" fill="#0d0713"/>
+    </g>
+    <g transform="translate(27, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="18" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="27" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="36" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
+        <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="0" y="45" width="7" height="7" fill="#002a00"/>
+      <rect x="0" y="54" width="7" height="7" fill="#0d0713"/>
     </g>
     <g transform="translate(36, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="10" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="20" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="30" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="40" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
-        <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="0" y="50" width="8" height="8" fill="#002a00"/>
-      <rect x="0" y="60" width="8" height="8" fill="#0d0713"/>
-    </g>
-    <g transform="translate(48, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="10" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="20" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="30" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="40" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="50" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="18" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="27" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="36" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="45" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
         <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
       </rect>
-      <rect x="0" y="60" width="8" height="8" fill="#004f00"/>
+      <rect x="0" y="54" width="7" height="7" fill="#004f00"/>
     </g>
-    <g transform="translate(60, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="10" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="20" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="30" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="40" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="50" width="8" height="8" fill="#00ff41"/>
-      <rect x="0" y="60" width="8" height="8" fill="#00ff41" filter="url(#matrixGlow)">
+    <g transform="translate(45, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="18" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="36" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="45" width="7" height="7" fill="#00ff41"/>
+      <rect x="0" y="54" width="7" height="7" fill="#00ff41" filter="url(#softGlow)">
         <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
       </rect>
     </g>
+    <g transform="translate(54, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="18" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="36" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="45" width="7" height="7" fill="#008f00"/>
+      <rect x="0" y="54" width="7" height="7" fill="#00ff41"/>
+    </g>
+    <g transform="translate(63, 0)">
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="18" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="36" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="45" width="7" height="7" fill="#004f00"/>
+      <rect x="0" y="54" width="7" height="7" fill="#008f00"/>
+    </g>
     <g transform="translate(72, 0)">
-      <rect x="0" y="0" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="10" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="20" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="30" width="8" height="8" fill="#0d0713"/>
-      <rect x="0" y="40" width="8" height="8" fill="#004f00"/>
-      <rect x="0" y="50" width="8" height="8" fill="#008f00"/>
-      <rect x="0" y="60" width="8" height="8" fill="#00ff41"/>
+      <rect x="0" y="0" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="9" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="18" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="27" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="36" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="45" width="7" height="7" fill="#0d0713"/>
+      <rect x="0" y="54" width="7" height="7" fill="#004f00"/>
     </g>
   </g>
-  <text x="0" y="130" font-size="8" fill="#333333" text-anchor="middle">1</text>
-  <text x="60" y="130" font-size="8" fill="#333333" text-anchor="middle">13</text>
-  <text x="120" y="130" font-size="8" fill="#333333" text-anchor="middle">26</text>
-  <text x="180" y="130" font-size="8" fill="#333333" text-anchor="middle">39</text>
-  <text x="240" y="130" font-size="8" fill="#333333" text-anchor="middle">52</text>
-  <g transform="translate(-8, 64)">
-    <text x="0" y="0" font-size="8" fill="#333333">Mon</text>
-    <text x="0" y="20" font-size="8" fill="#333333">Wed</text>
-    <text x="0" y="40" font-size="8" fill="#333333">Fri</text>
-    <text x="0" y="60" font-size="8" fill="#333333">Sun</text>
+
+  <!-- Week labels -->
+  <g transform="translate(20, 132)">
+    <text x="0" y="0" font-size="7" fill="#333333" text-anchor="middle">1</text>
+    <text x="63" y="0" font-size="7" fill="#333333" text-anchor="middle">13</text>
+    <text x="126" y="0" font-size="7" fill="#333333" text-anchor="middle">26</text>
+    <text x="189" y="0" font-size="7" fill="#333333" text-anchor="middle">39</text>
+    <text x="252" y="0" font-size="7" fill="#333333" text-anchor="middle">52</text>
   </g>
-  <rect x="20" y="148" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="160" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PAST YEAR ACTIVITY</text>
+
+  <!-- Day labels -->
+  <g transform="translate(8, 64)">
+    <text x="0" y="0" font-size="7" fill="#333333">Mon</text>
+    <text x="0" y="18" font-size="7" fill="#333333">Wed</text>
+    <text x="0" y="36" font-size="7" fill="#333333">Fri</text>
+    <text x="0" y="54" font-size="7" fill="#333333">Sun</text>
+  </g>
+
+  {footer_bar("PAST YEAR ACTIVITY", 400, 166)}
 </svg>'''
-    return svg
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution Graph — Awon Aziz" font-family="{FONT_STACK}">
+  <title>Contribution Graph — Awon Aziz</title>
+{svg_defs()}
+  <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
+{body}'''
 
 
 def main():

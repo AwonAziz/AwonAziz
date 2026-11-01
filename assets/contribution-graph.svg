@@ -1,81 +1,6 @@
-#!/usr/bin/env python3
-"""
-Generate cyberpunk SVG profile assets from real GitHub API data.
-Run via GitHub Actions on a schedule to keep stats current.
-"""
-
-import json
-import os
-import urllib.request
-import urllib.error
-
-USERNAME = "AwonAziz"
-TOKEN = os.environ.get("GITHUB_TOKEN", "")
-OUTPUT_DIR = "assets"
-
-FONT_STACK = "'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace"
-
-
-def api_get(path):
-    """Fetch data from GitHub API with optional auth."""
-    url = f"https://api.github.com{path}"
-    headers = {"Accept": "application/vnd.github+json", "User-Agent": "AwonAziz-profile-generator"}
-    if TOKEN:
-        headers["Authorization"] = f"token {TOKEN}"
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        print(f"API error {e.code} for {path}")
-        return {}
-
-
-def fetch_user():
-    return api_get(f"/users/{USERNAME}")
-
-
-def fetch_repos():
-    repos = []
-    page = 1
-    while True:
-        data = api_get(f"/users/{USERNAME}/repos?per_page=100&page={page}&type=owner&sort=updated")
-        if not data:
-            break
-        repos.extend(data)
-        if len(data) < 100:
-            break
-        page += 1
-    return repos
-
-
-def fetch_languages(repos):
-    """Aggregate language bytes across all repos."""
-    lang_bytes = {}
-    for r in repos:
-        lang_url = r.get("languages_url")
-        if not lang_url:
-            continue
-        if lang_url.startswith("https://api.github.com/repos/"):
-            path = lang_url.replace("https://api.github.com", "")
-            langs = api_get(path)
-            for lang, bytes_count in langs.items():
-                lang_bytes[lang] = lang_bytes.get(lang, 0) + bytes_count
-    return lang_bytes
-
-
-def esc(text):
-    """XML-escape text."""
-    if not text:
-        return ""
-    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def svg_header(width, height, title_text, aria_label):
-    """Generate common SVG header with defs, background, border."""
-    return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{aria_label}" font-family="{FONT_STACK}">
-  <title>{title_text}</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contribution Graph — Awon Aziz" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace">
+  <title>Contribution Graph — Awon Aziz</title>
   <defs>
     <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -101,213 +26,9 @@ def svg_header(width, height, title_text, aria_label):
   <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
   <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
   <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
-  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>'''
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
 
-
-def generate_stats_overview(user, repos):
-    """Generate stats-overview.svg with real data."""
-    total_stars = sum(r.get("stargazers_count", 0) for r in repos)
-    total_forks = sum(r.get("forks_count", 0) for r in repos)
-    public_repos = user.get("public_repos", len(repos))
-    followers = user.get("followers", 0)
-
-    body = f'''
-  <!-- Matrix rain strip (right side, subtle) -->
-  <g opacity="0.10" transform="translate(360, 40)">
-    <text x="0" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-40;200" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-    </text>
-    <text x="12" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-50;200" dur="3s" begin="-0.8s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-    </text>
-  </g>
-
-  <!-- Title bar -->
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
-  <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">GITHUB STATS</text>
-  <text x="380" y="20" font-size="9" fill="#00aa00" text-anchor="end" letter-spacing="1">{esc(USERNAME).upper()}</text>
-
-  <!-- Accent line under title -->
-  <line x1="16" y1="34" x2="384" y2="34" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
-  <rect x="16" y="33" width="80" height="2" fill="#00ff41" opacity="0.8">
-    <animate attributeName="width" values="0;80" dur="1s" begin="0.01s" fill="freeze"/>
-  </rect>
-
-  <!-- Stats rows -->
-  <g transform="translate(16, 44)">
-    <text x="0" y="16" font-size="10" fill="#00aa00" letter-spacing="0.5">PUBLIC REPOS</text>
-    <text x="368" y="16" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos}</text>
-    <line x1="0" y1="22" x2="368" y2="22" stroke="#003300" stroke-width="0.5"/>
-
-    <text x="0" y="40" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL STARS</text>
-    <text x="368" y="40" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_stars}</text>
-    <line x1="0" y1="46" x2="368" y2="46" stroke="#003300" stroke-width="0.5"/>
-
-    <text x="0" y="64" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL FORKS</text>
-    <text x="368" y="64" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{total_forks}</text>
-    <line x1="0" y1="70" x2="368" y2="70" stroke="#003300" stroke-width="0.5"/>
-
-    <text x="0" y="88" font-size="10" fill="#00aa00" letter-spacing="0.5">FOLLOWERS</text>
-    <text x="368" y="88" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{followers}</text>
-    <line x1="0" y1="94" x2="368" y2="94" stroke="#003300" stroke-width="0.5"/>
-  </g>
-
-  <!-- Footer -->
-  <rect x="16" y="216" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="227" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">SYSTEM OPERATIONAL</text>
-</svg>'''
-    return svg_header(400, 240, "GitHub Stats — Awon Aziz", "GitHub Stats — Awon Aziz") + body
-
-
-def generate_languages(lang_bytes):
-    """Generate languages.svg with real language data."""
-    if not lang_bytes:
-        lang_bytes = {"Python": 1000}
-
-    total = sum(lang_bytes.values())
-    sorted_langs = sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:6]
-    colors = ["#3776AB", "#3178C6", "#00AA00", "#E34F26", "#C471ED", "#F7DF1E"]
-
-    bars = []
-    y = 14
-    bar_spacing = 24
-    for i, (lang, bytes_count) in enumerate(sorted_langs):
-        pct = bytes_count / total * 100 if total > 0 else 0
-        bar_width = int(368 * bytes_count / max(lang_bytes.values())) if lang_bytes.values() else 100
-        color = colors[i % len(colors)]
-        bars.append(f'''
-    <text x="0" y="{y}" font-size="10" fill="#5eead4" font-weight="bold">{esc(lang)}</text>
-    <text x="368" y="{y}" font-size="9" fill="#00ff41" text-anchor="end">{pct:.0f}%</text>
-    <rect x="0" y="{y + 4}" width="368" height="6" rx="3" fill="#001a00"/>
-    <rect x="0" y="{y + 4}" width="0" height="6" rx="3" fill="{color}" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;{bar_width}" dur="{1.0 + i * 0.1:.1f}s" begin="{0.01 + i * 0.1:.2f}s" fill="freeze"/>
-    </rect>''')
-        y += bar_spacing
-
-    body = f'''
-  <!-- Matrix rain strip (right side, subtle) -->
-  <g opacity="0.10" transform="translate(360, 40)">
-    <text x="0" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-40;240" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-    </text>
-    <text x="12" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-50;240" dur="3s" begin="-0.8s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-    </text>
-  </g>
-
-  <!-- Title bar -->
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
-  <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">TOP LANGUAGES</text>
-  <text x="380" y="20" font-size="9" fill="#00aa00" text-anchor="end" letter-spacing="1">REAL DATA</text>
-
-  <!-- Accent line under title -->
-  <line x1="16" y1="34" x2="384" y2="34" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
-  <rect x="16" y="33" width="80" height="2" fill="#00ff41" opacity="0.8">
-    <animate attributeName="width" values="0;80" dur="1s" begin="0.01s" fill="freeze"/>
-  </rect>
-
-  <!-- Language bars -->
-  <g transform="translate(16, 44)">
-    {''.join(bars)}
-  </g>
-
-  <!-- Footer -->
-  <rect x="16" y="{44 + y + 4}" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="{44 + y + 15}" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">MACHINE LEARNING FOCUS</text>
-</svg>'''
-    return svg_header(400, 44 + y + 24, "Top Languages — Awon Aziz", "Top Languages — Awon Aziz") + body
-
-
-def generate_streak(user):
-    """Generate streak.svg with real data."""
-    public_repos = user.get("public_repos", 0)
-    bio = esc(user.get("bio") or "MLOps Engineer")
-    location = esc(user.get("location") or "Islamabad, PK")
-
-    body = f'''
-  <!-- Matrix rain strip (right side, subtle) -->
-  <g opacity="0.10" transform="translate(360, 40)">
-    <text x="0" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-40;140" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-      <tspan x="0" dy="10">1</tspan>
-      <tspan x="0" dy="10">0</tspan>
-    </text>
-    <text x="12" y="0" font-size="8" fill="#00ff41">
-      <animate attributeName="y" values="-50;140" dur="3s" begin="-0.8s" calcMode="discrete" repeatCount="indefinite"/>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-      <tspan x="12" dy="10">0</tspan>
-      <tspan x="12" dy="10">1</tspan>
-    </text>
-  </g>
-
-  <!-- Title bar -->
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
-  <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
-  <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">CONTRIBUTION STREAK</text>
-  <text x="380" y="20" font-size="9" fill="#00aa00" text-anchor="end" letter-spacing="1">STATUS</text>
-
-  <!-- Accent line under title -->
-  <line x1="16" y1="34" x2="384" y2="34" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
-  <rect x="16" y="33" width="80" height="2" fill="#00ff41" opacity="0.8">
-    <animate attributeName="width" values="0;80" dur="1s" begin="0.01s" fill="freeze"/>
-  </rect>
-
-  <!-- Stats rows -->
-  <g transform="translate(16, 44)">
-    <text x="0" y="16" font-size="10" fill="#00aa00" letter-spacing="0.5">CURRENT STREAK</text>
-    <text x="368" y="16" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <line x1="0" y1="22" x2="368" y2="22" stroke="#003300" stroke-width="0.5"/>
-
-    <text x="0" y="40" font-size="10" fill="#00aa00" letter-spacing="0.5">LONGEST STREAK</text>
-    <text x="368" y="40" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <line x1="0" y1="46" x2="368" y2="46" stroke="#003300" stroke-width="0.5"/>
-
-    <text x="0" y="64" font-size="10" fill="#00aa00" letter-spacing="0.5">TOTAL CONTRIBUTIONS</text>
-    <text x="368" y="64" font-size="15" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos} repos</text>
-    <line x1="0" y1="70" x2="368" y2="70" stroke="#003300" stroke-width="0.5"/>
-  </g>
-
-  <!-- Status indicator -->
-  <g transform="translate(16, 124)">
-    <circle cx="8" cy="8" r="5" fill="#FF6EC7" filter="url(#softGlow)">
-      <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
-      <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
-    <text x="20" y="13" font-size="10" fill="#FF6EC7" font-weight="bold">{bio}</text>
-  </g>
-
-  <!-- Footer -->
-  <rect x="16" y="156" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="167" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">PROFILE: {location}</text>
-</svg>'''
-    return svg_header(400, 180, "Contribution Streak — Awon Aziz", "Contribution Streak — Awon Aziz") + body
-
-
-def generate_contribution_graph():
-    """Generate contribution-graph.svg with a real-time style grid."""
-    body = '''
-  <!-- Matrix rain strip (right side, subtle) -->
+    <!-- Matrix rain strip (right side, subtle) -->
   <g opacity="0.10" transform="translate(360, 40)">
     <text x="0" y="0" font-size="8" fill="#00ff41">
       <animate attributeName="y" values="-40;150" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
@@ -325,7 +46,7 @@ def generate_contribution_graph():
     </text>
   </g>
 
-  <!-- Title bar -->
+    <!-- Title bar -->
   <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
   <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
   <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">CONTRIBUTION GRAPH</text>
@@ -465,7 +186,7 @@ def generate_contribution_graph():
     <text x="0" y="54" font-size="7" fill="#333333">Sun</text>
   </g>
 
-  <!-- Footer -->
+    <!-- Footer -->
   <rect x="16" y="166" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
   <text x="200" y="177" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">PAST YEAR ACTIVITY</text>
 </svg>

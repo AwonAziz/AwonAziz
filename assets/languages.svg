@@ -1,4 +1,5 @@
-<svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top Languages — Awon Aziz" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="224" viewBox="0 0 400 224" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top Languages — Awon Aziz" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace">
   <title>Top Languages — Awon Aziz</title>
   <defs>
     <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
@@ -22,16 +23,12 @@
       <rect width="4" height="2" fill="#00ff41" opacity="0.03"/>
     </pattern>
   </defs>
-
-  <!-- Background -->
   <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
   <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
   <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
-
-  <!-- Border -->
   <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
 
-  <!-- Matrix rain strip (right side, subtle) -->
+    <!-- Matrix rain strip (right side, subtle) -->
   <g opacity="0.10" transform="translate(360, 40)">
     <text x="0" y="0" font-size="8" fill="#00ff41">
       <animate attributeName="y" values="-40;240" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
@@ -49,7 +46,7 @@
     </text>
   </g>
 
-  <!-- Title bar -->
+    <!-- Title bar -->
   <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
   <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
   <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">TOP LANGUAGES</text>
@@ -63,56 +60,46 @@
 
   <!-- Language bars -->
   <g transform="translate(16, 44)">
-    <!-- Python -->
+    
     <text x="0" y="14" font-size="10" fill="#5eead4" font-weight="bold">Python</text>
-    <text x="368" y="14" font-size="9" fill="#00ff41" text-anchor="end">62%</text>
+    <text x="368" y="14" font-size="9" fill="#00ff41" text-anchor="end">68%</text>
     <rect x="0" y="18" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="18" width="0" height="6" rx="3" fill="#3776AB" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;228" dur="1s" begin="0.01s" fill="freeze"/>
+      <animate attributeName="width" values="0;368" dur="1.0s" begin="0.01s" fill="freeze"/>
     </rect>
-
-    <!-- TypeScript -->
     <text x="0" y="38" font-size="10" fill="#5eead4" font-weight="bold">TypeScript</text>
-    <text x="368" y="38" font-size="9" fill="#00ff41" text-anchor="end">14%</text>
+    <text x="368" y="38" font-size="9" fill="#00ff41" text-anchor="end">12%</text>
     <rect x="0" y="42" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="42" width="0" height="6" rx="3" fill="#3178C6" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;52" dur="1.1s" begin="0.1s" fill="freeze"/>
+      <animate attributeName="width" values="0;64" dur="1.1s" begin="0.11s" fill="freeze"/>
     </rect>
-
-    <!-- Shell -->
     <text x="0" y="62" font-size="10" fill="#5eead4" font-weight="bold">Shell</text>
-    <text x="368" y="62" font-size="9" fill="#00ff41" text-anchor="end">9%</text>
+    <text x="368" y="62" font-size="9" fill="#00ff41" text-anchor="end">8%</text>
     <rect x="0" y="66" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="66" width="0" height="6" rx="3" fill="#00AA00" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;33" dur="1.2s" begin="0.2s" fill="freeze"/>
+      <animate attributeName="width" values="0;42" dur="1.2s" begin="0.21s" fill="freeze"/>
     </rect>
-
-    <!-- HTML -->
     <text x="0" y="86" font-size="10" fill="#5eead4" font-weight="bold">HTML</text>
-    <text x="368" y="86" font-size="9" fill="#00ff41" text-anchor="end">7%</text>
+    <text x="368" y="86" font-size="9" fill="#00ff41" text-anchor="end">6%</text>
     <rect x="0" y="90" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="90" width="0" height="6" rx="3" fill="#E34F26" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;26" dur="1.3s" begin="0.3s" fill="freeze"/>
+      <animate attributeName="width" values="0;31" dur="1.3s" begin="0.31s" fill="freeze"/>
     </rect>
-
-    <!-- Jupyter Notebook -->
     <text x="0" y="110" font-size="10" fill="#5eead4" font-weight="bold">Jupyter Notebook</text>
-    <text x="368" y="110" font-size="9" fill="#00ff41" text-anchor="end">6%</text>
+    <text x="368" y="110" font-size="9" fill="#00ff41" text-anchor="end">5%</text>
     <rect x="0" y="114" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="114" width="0" height="6" rx="3" fill="#C471ED" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;22" dur="1.4s" begin="0.4s" fill="freeze"/>
+      <animate attributeName="width" values="0;26" dur="1.4s" begin="0.41s" fill="freeze"/>
     </rect>
-
-    <!-- CSS -->
     <text x="0" y="134" font-size="10" fill="#5eead4" font-weight="bold">CSS</text>
     <text x="368" y="134" font-size="9" fill="#00ff41" text-anchor="end">1%</text>
     <rect x="0" y="138" width="368" height="6" rx="3" fill="#001a00"/>
     <rect x="0" y="138" width="0" height="6" rx="3" fill="#F7DF1E" filter="url(#softGlow)">
-      <animate attributeName="width" values="0;4" dur="1.5s" begin="0.5s" fill="freeze"/>
+      <animate attributeName="width" values="0;5" dur="1.5s" begin="0.51s" fill="freeze"/>
     </rect>
   </g>
 
-  <!-- Footer -->
-  <rect x="16" y="256" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="267" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">MACHINE LEARNING FOCUS</text>
+    <!-- Footer -->
+  <rect x="16" y="206" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="217" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">MACHINE LEARNING FOCUS</text>
 </svg>
