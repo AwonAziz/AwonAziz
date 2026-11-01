@@ -133,9 +133,9 @@ def generate_languages(lang_bytes):
     sorted_langs = sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:6]
 
     bars = []
-    y = 0
+    y = 64  # Start below header (header ends at y=40, add padding)
     bar_height = 18
-    bar_spacing = 28
+    bar_spacing = 30
     colors = ["#3776AB", "#EE4C2C", "#00AA00", "#009688", "#C471ED", "#F7DF1E"]
     for i, (lang, bytes_count) in enumerate(sorted_langs):
         pct = bytes_count / total * 100 if total > 0 else 0
@@ -148,8 +148,10 @@ def generate_languages(lang_bytes):
     <text x="330" y="{y + 14}" font-size="11" fill="#00ff41" text-anchor="end">{pct:.0f}%</text>''')
         y += bar_spacing
 
+    footer_y = y + 10
+
     svg = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="{y + 50}" viewBox="0 0 400 {y + 50}" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="{footer_y + 34}" viewBox="0 0 400 {footer_y + 34}" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
     <linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0a0a0a"/>
@@ -165,8 +167,8 @@ def generate_languages(lang_bytes):
   <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
   <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TOP LANGUAGES</text>
   {''.join(bars)}
-  <rect x="20" y="{y + 8}" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="{y + 20}" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
+  <rect x="20" y="{footer_y}" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="{footer_y + 12}" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
 </svg>'''
     return svg
 
@@ -177,7 +179,7 @@ def generate_streak(user):
     public_repos = user.get("public_repos", 0)
 
     svg = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="160" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
     <linearGradient id="streakBg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0a0a0a"/>
@@ -192,23 +194,23 @@ def generate_streak(user):
   <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
   <rect x="20" y="14" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
   <text x="28" y="31" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">CONTRIBUTION STREAK</text>
-  <g transform="translate(20, 52)">
-    <text x="0" y="20" font-size="11" fill="#00aa00">CURRENT STREAK</text>
-    <text x="380" y="20" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <text x="0" y="48" font-size="11" fill="#00aa00">LONGEST STREAK</text>
-    <text x="380" y="48" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
-    <text x="0" y="76" font-size="11" fill="#00aa00">TOTAL CONTRIBUTIONS</text>
-    <text x="380" y="76" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos} repos</text>
+  <g transform="translate(20, 54)">
+    <text x="0" y="22" font-size="11" fill="#00aa00">CURRENT STREAK</text>
+    <text x="380" y="22" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
+    <text x="0" y="52" font-size="11" fill="#00aa00">LONGEST STREAK</text>
+    <text x="380" y="52" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">0</text>
+    <text x="0" y="82" font-size="11" fill="#00aa00">TOTAL CONTRIBUTIONS</text>
+    <text x="380" y="82" font-size="18" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#matrixGlow)">{public_repos} repos</text>
   </g>
-  <g transform="translate(20, 104)">
+  <g transform="translate(20, 112)">
     <circle cx="10" cy="8" r="6" fill="#FF6EC7" filter="url(#matrixGlow)">
       <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </circle>
     <text x="24" y="14" font-size="11" fill="#FF6EC7" font-weight="bold">{esc(user.get('bio') or 'MLOps Engineer')}</text>
   </g>
-  <rect x="20" y="128" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="140" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PROFILE: {esc(user.get('location') or 'Islamabad, PK')}</text>
+  <rect x="20" y="152" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="164" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PROFILE: {esc(user.get('location') or 'Islamabad, PK')}</text>
 </svg>'''
     return svg
 
@@ -216,7 +218,7 @@ def generate_streak(user):
 def generate_contribution_graph():
     """Generate contribution-graph.svg with a real-time style grid."""
     svg = '''<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
     <linearGradient id="graphBg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0a0a0a"/>
@@ -231,7 +233,7 @@ def generate_contribution_graph():
   <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
   <rect x="20" y="14" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
   <text x="28" y="31" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">CONTRIBUTION GRAPH</text>
-  <g transform="translate(300, 32)">
+  <g transform="translate(300, 44)">
     <rect x="0" y="0" width="10" height="10" fill="#0d0713"/>
     <text x="14" y="9" font-size="9" fill="#00aa00">0</text>
     <rect x="30" y="0" width="10" height="10" fill="#004f00"/>
@@ -243,7 +245,7 @@ def generate_contribution_graph():
     <rect x="120" y="0" width="10" height="10" fill="#00ff41" filter="url(#matrixGlow)"/>
     <text x="134" y="9" font-size="9" fill="#00ff41" font-weight="bold">4</text>
   </g>
-  <g transform="translate(20, 50)">
+  <g transform="translate(20, 64)">
     <g transform="translate(0, 0)">
       <rect x="0" y="0" width="8" height="8" fill="#004f00"/>
       <rect x="0" y="10" width="8" height="8" fill="#008f00"/>
@@ -320,19 +322,19 @@ def generate_contribution_graph():
       <rect x="0" y="60" width="8" height="8" fill="#00ff41"/>
     </g>
   </g>
-  <text x="0" y="86" font-size="8" fill="#333333" text-anchor="middle">1</text>
-  <text x="60" y="86" font-size="8" fill="#333333" text-anchor="middle">13</text>
-  <text x="120" y="86" font-size="8" fill="#333333" text-anchor="middle">26</text>
-  <text x="180" y="86" font-size="8" fill="#333333" text-anchor="middle">39</text>
-  <text x="240" y="86" font-size="8" fill="#333333" text-anchor="middle">52</text>
-  <g transform="translate(-8, 10)">
+  <text x="0" y="130" font-size="8" fill="#333333" text-anchor="middle">1</text>
+  <text x="60" y="130" font-size="8" fill="#333333" text-anchor="middle">13</text>
+  <text x="120" y="130" font-size="8" fill="#333333" text-anchor="middle">26</text>
+  <text x="180" y="130" font-size="8" fill="#333333" text-anchor="middle">39</text>
+  <text x="240" y="130" font-size="8" fill="#333333" text-anchor="middle">52</text>
+  <g transform="translate(-8, 64)">
     <text x="0" y="0" font-size="8" fill="#333333">Mon</text>
     <text x="0" y="20" font-size="8" fill="#333333">Wed</text>
     <text x="0" y="40" font-size="8" fill="#333333">Fri</text>
     <text x="0" y="60" font-size="8" fill="#333333">Sun</text>
   </g>
-  <rect x="20" y="174" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="186" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PAST YEAR ACTIVITY</text>
+  <rect x="20" y="148" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="160" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PAST YEAR ACTIVITY</text>
 </svg>'''
     return svg
 

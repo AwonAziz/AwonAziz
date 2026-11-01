@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="190" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
     <linearGradient id="graphBg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0a0a0a"/>
@@ -14,7 +14,7 @@
   <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
   <rect x="20" y="14" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
   <text x="28" y="31" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">CONTRIBUTION GRAPH</text>
-  <g transform="translate(300, 32)">
+  <g transform="translate(300, 44)">
     <rect x="0" y="0" width="10" height="10" fill="#0d0713"/>
     <text x="14" y="9" font-size="9" fill="#00aa00">0</text>
     <rect x="30" y="0" width="10" height="10" fill="#004f00"/>
@@ -26,7 +26,7 @@
     <rect x="120" y="0" width="10" height="10" fill="#00ff41" filter="url(#matrixGlow)"/>
     <text x="134" y="9" font-size="9" fill="#00ff41" font-weight="bold">4</text>
   </g>
-  <g transform="translate(20, 50)">
+  <g transform="translate(20, 64)">
     <g transform="translate(0, 0)">
       <rect x="0" y="0" width="8" height="8" fill="#004f00"/>
       <rect x="0" y="10" width="8" height="8" fill="#008f00"/>
@@ -103,17 +103,17 @@
       <rect x="0" y="60" width="8" height="8" fill="#00ff41"/>
     </g>
   </g>
-  <text x="0" y="86" font-size="8" fill="#333333" text-anchor="middle">1</text>
-  <text x="60" y="86" font-size="8" fill="#333333" text-anchor="middle">13</text>
-  <text x="120" y="86" font-size="8" fill="#333333" text-anchor="middle">26</text>
-  <text x="180" y="86" font-size="8" fill="#333333" text-anchor="middle">39</text>
-  <text x="240" y="86" font-size="8" fill="#333333" text-anchor="middle">52</text>
-  <g transform="translate(-8, 10)">
+  <text x="0" y="130" font-size="8" fill="#333333" text-anchor="middle">1</text>
+  <text x="60" y="130" font-size="8" fill="#333333" text-anchor="middle">13</text>
+  <text x="120" y="130" font-size="8" fill="#333333" text-anchor="middle">26</text>
+  <text x="180" y="130" font-size="8" fill="#333333" text-anchor="middle">39</text>
+  <text x="240" y="130" font-size="8" fill="#333333" text-anchor="middle">52</text>
+  <g transform="translate(-8, 64)">
     <text x="0" y="0" font-size="8" fill="#333333">Mon</text>
     <text x="0" y="20" font-size="8" fill="#333333">Wed</text>
     <text x="0" y="40" font-size="8" fill="#333333">Fri</text>
     <text x="0" y="60" font-size="8" fill="#333333">Sun</text>
   </g>
-  <rect x="20" y="174" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="186" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PAST YEAR ACTIVITY</text>
+  <rect x="20" y="148" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="160" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PAST YEAR ACTIVITY</text>
 </svg>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="218" viewBox="0 0 400 218" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="288" viewBox="0 0 400 288" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
     <linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0a0a0a"/>
@@ -15,30 +15,30 @@
   <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
   <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TOP LANGUAGES</text>
   
-    <rect x="0" y="0" width="260" height="18" rx="3" fill="#001a00" stroke="#3776AB" stroke-width="1"/>
-    <rect x="0" y="0" width="260" height="18" rx="3" fill="#3776AB" opacity="0.9"/>
-    <text x="6" y="14" font-size="11" fill="#000000" font-weight="bold">Python</text>
-    <text x="330" y="14" font-size="11" fill="#00ff41" text-anchor="end">67%</text>
-    <rect x="0" y="28" width="46" height="18" rx="3" fill="#001a00" stroke="#EE4C2C" stroke-width="1"/>
-    <rect x="0" y="28" width="46" height="18" rx="3" fill="#EE4C2C" opacity="0.9"/>
-    <text x="6" y="42" font-size="11" fill="#000000" font-weight="bold">TypeScript</text>
-    <text x="330" y="42" font-size="11" fill="#00ff41" text-anchor="end">12%</text>
-    <rect x="0" y="56" width="30" height="18" rx="3" fill="#001a00" stroke="#00AA00" stroke-width="1"/>
-    <rect x="0" y="56" width="30" height="18" rx="3" fill="#00AA00" opacity="0.9"/>
-    <text x="6" y="70" font-size="11" fill="#000000" font-weight="bold">Shell</text>
-    <text x="330" y="70" font-size="11" fill="#00ff41" text-anchor="end">8%</text>
-    <rect x="0" y="84" width="22" height="18" rx="3" fill="#001a00" stroke="#009688" stroke-width="1"/>
-    <rect x="0" y="84" width="22" height="18" rx="3" fill="#009688" opacity="0.9"/>
-    <text x="6" y="98" font-size="11" fill="#000000" font-weight="bold">HTML</text>
-    <text x="330" y="98" font-size="11" fill="#00ff41" text-anchor="end">6%</text>
-    <rect x="0" y="112" width="19" height="18" rx="3" fill="#001a00" stroke="#C471ED" stroke-width="1"/>
-    <rect x="0" y="112" width="19" height="18" rx="3" fill="#C471ED" opacity="0.9"/>
-    <text x="6" y="126" font-size="11" fill="#000000" font-weight="bold">Jupyter Notebook</text>
-    <text x="330" y="126" font-size="11" fill="#00ff41" text-anchor="end">5%</text>
-    <rect x="0" y="140" width="4" height="18" rx="3" fill="#001a00" stroke="#F7DF1E" stroke-width="1"/>
-    <rect x="0" y="140" width="4" height="18" rx="3" fill="#F7DF1E" opacity="0.9"/>
-    <text x="6" y="154" font-size="11" fill="#000000" font-weight="bold">CSS</text>
-    <text x="330" y="154" font-size="11" fill="#00ff41" text-anchor="end">1%</text>
-  <rect x="20" y="176" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="188" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
+    <rect x="0" y="64" width="260" height="18" rx="3" fill="#001a00" stroke="#3776AB" stroke-width="1"/>
+    <rect x="0" y="64" width="260" height="18" rx="3" fill="#3776AB" opacity="0.9"/>
+    <text x="6" y="78" font-size="11" fill="#000000" font-weight="bold">Python</text>
+    <text x="330" y="78" font-size="11" fill="#00ff41" text-anchor="end">62%</text>
+    <rect x="0" y="94" width="59" height="18" rx="3" fill="#001a00" stroke="#EE4C2C" stroke-width="1"/>
+    <rect x="0" y="94" width="59" height="18" rx="3" fill="#EE4C2C" opacity="0.9"/>
+    <text x="6" y="108" font-size="11" fill="#000000" font-weight="bold">TypeScript</text>
+    <text x="330" y="108" font-size="11" fill="#00ff41" text-anchor="end">14%</text>
+    <rect x="0" y="124" width="38" height="18" rx="3" fill="#001a00" stroke="#00AA00" stroke-width="1"/>
+    <rect x="0" y="124" width="38" height="18" rx="3" fill="#00AA00" opacity="0.9"/>
+    <text x="6" y="138" font-size="11" fill="#000000" font-weight="bold">Shell</text>
+    <text x="330" y="138" font-size="11" fill="#00ff41" text-anchor="end">9%</text>
+    <rect x="0" y="154" width="28" height="18" rx="3" fill="#001a00" stroke="#009688" stroke-width="1"/>
+    <rect x="0" y="154" width="28" height="18" rx="3" fill="#009688" opacity="0.9"/>
+    <text x="6" y="168" font-size="11" fill="#000000" font-weight="bold">HTML</text>
+    <text x="330" y="168" font-size="11" fill="#00ff41" text-anchor="end">7%</text>
+    <rect x="0" y="184" width="24" height="18" rx="3" fill="#001a00" stroke="#C471ED" stroke-width="1"/>
+    <rect x="0" y="184" width="24" height="18" rx="3" fill="#C471ED" opacity="0.9"/>
+    <text x="6" y="198" font-size="11" fill="#000000" font-weight="bold">Jupyter Notebook</text>
+    <text x="330" y="198" font-size="11" fill="#00ff41" text-anchor="end">6%</text>
+    <rect x="0" y="214" width="5" height="18" rx="3" fill="#001a00" stroke="#F7DF1E" stroke-width="1"/>
+    <rect x="0" y="214" width="5" height="18" rx="3" fill="#F7DF1E" opacity="0.9"/>
+    <text x="6" y="228" font-size="11" fill="#000000" font-weight="bold">CSS</text>
+    <text x="330" y="228" font-size="11" fill="#00ff41" text-anchor="end">1%</text>
+  <rect x="20" y="254" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="266" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
 </svg>
