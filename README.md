@@ -17,7 +17,7 @@ root@awon:~# cat about.md
 
 > `I build the operational half of machine learning.`
 
-![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=5)
+![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=6)
 
 ```text
 root@awon:~# cat contacts.md

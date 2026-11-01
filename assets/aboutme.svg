@@ -5,19 +5,33 @@
       <feGaussianBlur stdDeviation="2" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <pattern id="hexGrid" width="40" height="35" patternUnits="userSpaceOnUse">
+      <path d="M20,0 L40,10 L40,25 L20,35 L0,25 L0,10 Z" fill="none" stroke="#00ff41" stroke-opacity="0.04" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="scanline" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#00ff41" opacity="0.03"/>
+    </pattern>
   </defs>
 
+  <!-- Background -->
   <rect width="800" height="400" fill="#0a0713" rx="12"/>
+  <rect width="800" height="400" fill="url(#hexGrid)" rx="12"/>
+  <rect width="800" height="400" fill="url(#scanline)" rx="12"/>
   <rect width="800" height="400" fill="none" stroke="#00ff41" stroke-width="1" rx="12" opacity="0.3"/>
 
   <!-- Title bar -->
   <rect x="1" y="1" width="798" height="32" rx="12" fill="#001a00" opacity="0.8"/>
+  <rect x="1" y="1" width="798" height="32" rx="12" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
   <text x="24" y="22" font-size="12" fill="#00ff41" font-weight="bold">ABOUT ME</text>
   <text x="776" y="22" font-size="9" fill="#00aa00" text-anchor="end">SYSTEM PROFILE</text>
 
-  <!-- Name -->
+  <!-- Accent line -->
+  <rect x="20" y="37" width="120" height="2" fill="#00ff41" opacity="0.8"/>
+
+  <!-- Name (right side) -->
   <text x="776" y="62" font-size="20" font-weight="bold" fill="#00ff41" text-anchor="end" filter="url(#glow)">Awon Aziz</text>
   <text x="776" y="80" font-size="11" fill="#00aa00" text-anchor="end">AI/MLOps Engineer</text>
+  <text x="776" y="96" font-size="10" fill="#00aa00" text-anchor="end">LLM Eval - Drift Detection - Promotion Gates</text>
 
   <!-- Terminal box -->
   <rect x="20" y="48" width="420" height="56" rx="6" fill="#0d0716" stroke="#003300" stroke-width="1"/>
@@ -33,6 +47,7 @@
 
   <!-- Quick Highlights -->
   <text x="20" y="210" font-size="12" fill="#00ff41" font-weight="bold">Quick Highlights</text>
+  <line x1="20" y1="216" x2="780" y2="216" stroke="#003300" stroke-width="0.5"/>
 
   <!-- Card 1 -->
   <rect x="20" y="224" width="370" height="60" rx="6" fill="#0d0716" stroke="#003300" stroke-width="1"/>
