@@ -1,122 +1,267 @@
-<svg width="800" height="420" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
   <defs>
+    <!-- Matrix rain column gradients -->
+    <linearGradient id="rainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00ff41" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#00ff41" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00ff41" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filters -->
     <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Scanline pattern -->
+    <pattern id="scanline" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#00ff41" opacity="0.04"/>
+    </pattern>
+
+    <!-- Hex grid background -->
+    <pattern id="hexGrid" width="40" height="35" patternUnits="userSpaceOnUse">
+      <path d="M20,0 L40,10 L40,25 L20,35 L0,25 L0,10 Z" fill="none" stroke="#00ff41" stroke-opacity="0.03" stroke-width="0.5"/>
+    </pattern>
   </defs>
 
+  <!-- Background -->
   <rect width="100%" height="100%" fill="#0a0713" rx="12"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="12"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="12"/>
+
+  <!-- Border -->
   <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="12" opacity="0.3"/>
 
-  <!-- Header -->
-  <rect x="20" y="14" width="760" height="24" rx="6" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="32" y="32" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TECHNICAL COMPETENCY</text>
-  <text x="748" y="32" font-size="10" fill="#00aa00" text-anchor="end">TECH STACK</text>
+  <!-- Matrix rain columns (background) -->
+  <g opacity="0.15">
+    <!-- Column 1 -->
+    <text x="50" y="0" font-size="12" fill="#00ff41">
+      <animate attributeName="y" values="-100;500" dur="4s" repeatCount="indefinite"/>
+      <tspan x="50" dy="14">1</tspan>
+      <tspan x="50" dy="14">0</tspan>
+      <tspan x="50" dy="14">1</tspan>
+      <tspan x="50" dy="14">0</tspan>
+      <tspan x="50" dy="14">1</tspan>
+    </text>
+    <!-- Column 2 -->
+    <text x="120" y="0" font-size="12" fill="#00ff41">
+      <animate attributeName="y" values="-150;500" dur="5s" begin="-1s" repeatCount="indefinite"/>
+      <tspan x="120" dy="14">0</tspan>
+      <tspan x="120" dy="14">1</tspan>
+      <tspan x="120" dy="14">0</tspan>
+      <tspan x="120" dy="14">1</tspan>
+      <tspan x="120" dy="14">0</tspan>
+    </text>
+    <!-- Column 3 -->
+    <text x="200" y="0" font-size="12" fill="#00ff41">
+      <animate attributeName="y" values="-120;500" dur="4.5s" begin="-2s" repeatCount="indefinite"/>
+      <tspan x="200" dy="14">1</tspan>
+      <tspan x="200" dy="14">1</tspan>
+      <tspan x="200" dy="14">0</tspan>
+      <tspan x="200" dy="14">1</tspan>
+      <tspan x="200" dy="14">0</tspan>
+    </text>
+    <!-- Column 4 -->
+    <text x="680" y="0" font-size="12" fill="#00ff41">
+      <animate attributeName="y" values="-180;500" dur="5.5s" begin="-0.5s" repeatCount="indefinite"/>
+      <tspan x="680" dy="14">0</tspan>
+      <tspan x="680" dy="14">0</tspan>
+      <tspan x="680" dy="14">1</tspan>
+      <tspan x="680" dy="14">0</tspan>
+      <tspan x="680" dy="14">1</tspan>
+    </text>
+    <!-- Column 5 -->
+    <text x="740" y="0" font-size="12" fill="#00ff41">
+      <animate attributeName="y" values="-140;500" dur="4.2s" begin="-1.5s" repeatCount="indefinite"/>
+      <tspan x="740" dy="14">1</tspan>
+      <tspan x="740" dy="14">0</tspan>
+      <tspan x="740" dy="14">1</tspan>
+      <tspan x="740" dy="14">0</tspan>
+      <tspan x="740" dy="14">0</tspan>
+    </text>
+  </g>
 
-  <!-- Column 1: ML / AI -->
-  <g transform="translate(20, 50)">
-    <text x="0" y="18" font-size="11" fill="#00aa00" font-weight="bold">ML / AI</text>
-    <rect x="0" y="26" width="180" height="2" fill="#003300"/>
-    <text x="0" y="44" font-size="10.5" fill="#00ff41" font-weight="bold">Python</text>
-    <rect x="0" y="50" width="155" height="6" rx="3" fill="#001a00" stroke="#3776AB" stroke-width="1"/>
-    <rect x="0" y="50" width="155" height="6" rx="3" fill="#3776AB" opacity="0.9">
-      <animate attributeName="width" values="0;155" dur="1s" begin="0.1s"/>
+  <!-- Title bar -->
+  <rect x="20" y="14" width="760" height="32" rx="6" fill="#001a00" stroke="#003300" stroke-width="1"/>
+  <text x="32" y="36" font-size="13" fill="#00ff41" font-weight="bold" letter-spacing="2" filter="url(#softGlow)">TECHNICAL COMPETENCY</text>
+  <text x="748" y="36" font-size="10" fill="#00aa00" text-anchor="end">CYBERPUNK HUD</text>
+
+  <!-- Horizontal accent line under title -->
+  <line x1="20" y1="52" x2="780" y2="52" stroke="#00ff41" stroke-width="1" opacity="0.5">
+    <animate attributeName="stroke-dasharray" values="0 760;760 0" dur="2s" fill="freeze"/>
+  </line>
+
+  <!-- Card: ML / AI -->
+  <g transform="translate(20, 62)">
+    <rect x="0" y="0" width="370" height="130" rx="8" fill="#0d0716" stroke="#003300" stroke-width="1"/>
+    <rect x="0" y="0" width="370" height="24" rx="8" fill="#001a00"/>
+    <text x="12" y="17" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1">[ ML / AI ]</text>
+    <circle cx="352" cy="12" r="4" fill="#00ff41" filter="url(#softGlow)">
+      <animate attributeName="fill-opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Python -->
+    <text x="12" y="42" font-size="11" fill="#5eead4" font-weight="bold">Python</text>
+    <text x="350" y="42" font-size="10" fill="#00aa00" text-anchor="end">95%</text>
+    <rect x="12" y="48" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="48" width="329" height="6" rx="3" fill="#3776AB" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;329" dur="1.2s" begin="0.2s" fill="freeze"/>
     </rect>
-    <text x="0" y="64" font-size="10.5" fill="#00ff41" font-weight="bold">PyTorch</text>
-    <rect x="0" y="70" width="140" height="6" rx="3" fill="#001a00" stroke="#EE4C2C" stroke-width="1"/>
-    <rect x="0" y="70" width="140" height="6" rx="3" fill="#EE4C2C" opacity="0.9">
-      <animate attributeName="width" values="0;140" dur="1.2s" begin="0.2s"/>
+
+    <!-- PyTorch -->
+    <text x="12" y="68" font-size="11" fill="#5eead4" font-weight="bold">PyTorch</text>
+    <text x="350" y="68" font-size="10" fill="#00aa00" text-anchor="end">88%</text>
+    <rect x="12" y="74" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="74" width="304" height="6" rx="3" fill="#EE4C2C" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;304" dur="1.4s" begin="0.4s" fill="freeze"/>
     </rect>
-    <text x="0" y="84" font-size="10.5" fill="#00ff41" font-weight="bold">Hugging Face</text>
-    <rect x="0" y="90" width="130" height="6" rx="3" fill="#001a00" stroke="#FFD21E" stroke-width="1"/>
-    <rect x="0" y="90" width="130" height="6" rx="3" fill="#FFD21E" opacity="0.9">
-      <animate attributeName="width" values="0;130" dur="1.4s" begin="0.3s"/>
+
+    <!-- Hugging Face -->
+    <text x="12" y="94" font-size="11" fill="#5eead4" font-weight="bold">Hugging Face</text>
+    <text x="350" y="94" font-size="10" fill="#00aa00" text-anchor="end">82%</text>
+    <rect x="12" y="100" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="100" width="284" height="6" rx="3" fill="#FFD21E" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;284" dur="1.6s" begin="0.6s" fill="freeze"/>
     </rect>
-    <text x="0" y="104" font-size="10.5" fill="#00ff41" font-weight="bold">MLflow</text>
-    <rect x="0" y="110" width="125" height="6" rx="3" fill="#001a00" stroke="#C471ED" stroke-width="1"/>
-    <rect x="0" y="110" width="125" height="6" rx="3" fill="#C471ED" opacity="0.9">
-      <animate attributeName="width" values="0;125" dur="1.6s" begin="0.4s"/>
+
+    <!-- MLflow -->
+    <text x="12" y="120" font-size="11" fill="#5eead4" font-weight="bold">MLflow</text>
+    <text x="350" y="120" font-size="10" fill="#00aa00" text-anchor="end">85%</text>
+    <rect x="12" y="126" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="126" width="294" height="6" rx="3" fill="#C471ED" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;294" dur="1.8s" begin="0.8s" fill="freeze"/>
     </rect>
   </g>
 
-  <!-- Column 2: Backend -->
-  <g transform="translate(210, 50)">
-    <text x="0" y="18" font-size="11" fill="#00aa00" font-weight="bold">Backend</text>
-    <rect x="0" y="26" width="180" height="2" fill="#003300"/>
-    <text x="0" y="44" font-size="10.5" fill="#00ff41" font-weight="bold">FastAPI</text>
-    <rect x="0" y="50" width="160" height="6" rx="3" fill="#001a00" stroke="#009688" stroke-width="1"/>
-    <rect x="0" y="50" width="160" height="6" rx="3" fill="#009688" opacity="0.9">
-      <animate attributeName="width" values="0;160" dur="1s" begin="0.1s"/>
+  <!-- Card: Backend -->
+  <g transform="translate(410, 62)">
+    <rect x="0" y="0" width="370" height="130" rx="8" fill="#0d0716" stroke="#003300" stroke-width="1"/>
+    <rect x="0" y="0" width="370" height="24" rx="8" fill="#001a00"/>
+    <text x="12" y="17" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1">[ Backend ]</text>
+    <circle cx="352" cy="12" r="4" fill="#00ff41" filter="url(#softGlow)">
+      <animate attributeName="fill-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- FastAPI -->
+    <text x="12" y="42" font-size="11" fill="#5eead4" font-weight="bold">FastAPI</text>
+    <text x="350" y="42" font-size="10" fill="#00aa00" text-anchor="end">90%</text>
+    <rect x="12" y="48" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="48" width="311" height="6" rx="3" fill="#009688" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;311" dur="1.2s" begin="0.2s" fill="freeze"/>
     </rect>
-    <text x="0" y="64" font-size="10.5" fill="#00ff41" font-weight="bold">PostgreSQL</text>
-    <rect x="0" y="70" width="150" height="6" rx="3" fill="#001a00" stroke="#4479A1" stroke-width="1"/>
-    <rect x="0" y="70" width="150" height="6" rx="3" fill="#4479A1" opacity="0.9">
-      <animate attributeName="width" values="0;150" dur="1.2s" begin="0.2s"/>
+
+    <!-- PostgreSQL -->
+    <text x="12" y="68" font-size="11" fill="#5eead4" font-weight="bold">PostgreSQL</text>
+    <text x="350" y="68" font-size="10" fill="#00aa00" text-anchor="end">85%</text>
+    <rect x="12" y="74" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="74" width="294" height="6" rx="3" fill="#4479A1" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;294" dur="1.4s" begin="0.4s" fill="freeze"/>
     </rect>
-    <text x="0" y="84" font-size="10.5" fill="#00ff41" font-weight="bold">Redis</text>
-    <rect x="0" y="90" width="140" height="6" rx="3" fill="#001a00" stroke="#D82D20" stroke-width="1"/>
-    <rect x="0" y="90" width="140" height="6" rx="3" fill="#D82D20" opacity="0.9">
-      <animate attributeName="width" values="0;140" dur="1.4s" begin="0.3s"/>
+
+    <!-- Redis -->
+    <text x="12" y="94" font-size="11" fill="#5eead4" font-weight="bold">Redis</text>
+    <text x="350" y="94" font-size="10" fill="#00aa00" text-anchor="end">80%</text>
+    <rect x="12" y="100" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="100" width="277" height="6" rx="3" fill="#D82D20" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;277" dur="1.6s" begin="0.6s" fill="freeze"/>
     </rect>
-    <text x="0" y="104" font-size="10.5" fill="#00ff41" font-weight="bold">Qdrant</text>
-    <rect x="0" y="110" width="130" height="6" rx="3" fill="#001a00" stroke="#FF6B6B" stroke-width="1"/>
-    <rect x="0" y="110" width="130" height="6" rx="3" fill="#FF6B6B" opacity="0.9">
-      <animate attributeName="width" values="0;130" dur="1.6s" begin="0.4s"/>
+
+    <!-- Qdrant -->
+    <text x="12" y="120" font-size="11" fill="#5eead4" font-weight="bold">Qdrant</text>
+    <text x="350" y="120" font-size="10" fill="#00aa00" text-anchor="end">78%</text>
+    <rect x="12" y="126" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="126" width="270" height="6" rx="3" fill="#FF6B6B" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;270" dur="1.8s" begin="0.8s" fill="freeze"/>
     </rect>
   </g>
 
-  <!-- Column 3: Frontend -->
-  <g transform="translate(400, 50)">
-    <text x="0" y="18" font-size="11" fill="#00aa00" font-weight="bold">Frontend</text>
-    <rect x="0" y="26" width="180" height="2" fill="#003300"/>
-    <text x="0" y="44" font-size="10.5" fill="#00ff41" font-weight="bold">React</text>
-    <rect x="0" y="50" width="155" height="6" rx="3" fill="#001a00" stroke="#61DAFB" stroke-width="1"/>
-    <rect x="0" y="50" width="155" height="6" rx="3" fill="#61DAFB" opacity="0.9">
-      <animate attributeName="width" values="0;155" dur="1s" begin="0.1s"/>
+  <!-- Card: Frontend -->
+  <g transform="translate(20, 200)">
+    <rect x="0" y="0" width="370" height="130" rx="8" fill="#0d0716" stroke="#003300" stroke-width="1"/>
+    <rect x="0" y="0" width="370" height="24" rx="8" fill="#001a00"/>
+    <text x="12" y="17" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1">[ Frontend ]</text>
+    <circle cx="352" cy="12" r="4" fill="#00ff41" filter="url(#softGlow)">
+      <animate attributeName="fill-opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- React -->
+    <text x="12" y="42" font-size="11" fill="#5eead4" font-weight="bold">React</text>
+    <text x="350" y="42" font-size="10" fill="#00aa00" text-anchor="end">85%</text>
+    <rect x="12" y="48" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="48" width="294" height="6" rx="3" fill="#61DAFB" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;294" dur="1.2s" begin="0.2s" fill="freeze"/>
     </rect>
-    <text x="0" y="64" font-size="10.5" fill="#00ff41" font-weight="bold">Next.js</text>
-    <rect x="0" y="70" width="150" height="6" rx="3" fill="#001a00" stroke="#000000" stroke-width="1"/>
-    <rect x="0" y="70" width="150" height="6" rx="3" fill="#000000" opacity="0.9">
-      <animate attributeName="width" values="0;150" dur="1.2s" begin="0.2s"/>
+
+    <!-- Next.js -->
+    <text x="12" y="68" font-size="11" fill="#5eead4" font-weight="bold">Next.js</text>
+    <text x="350" y="68" font-size="10" fill="#00aa00" text-anchor="end">82%</text>
+    <rect x="12" y="74" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="74" width="284" height="6" rx="3" fill="#000000" stroke="#00ff41" stroke-width="0.5" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;284" dur="1.4s" begin="0.4s" fill="freeze"/>
     </rect>
-    <text x="0" y="84" font-size="10.5" fill="#00ff41" font-weight="bold">TypeScript</text>
-    <rect x="0" y="90" width="145" height="6" rx="3" fill="#001a00" stroke="#3178C6" stroke-width="1"/>
-    <rect x="0" y="90" width="145" height="6" rx="3" fill="#3178C6" opacity="0.9">
-      <animate attributeName="width" values="0;145" dur="1.4s" begin="0.3s"/>
+
+    <!-- TypeScript -->
+    <text x="12" y="94" font-size="11" fill="#5eead4" font-weight="bold">TypeScript</text>
+    <text x="350" y="94" font-size="10" fill="#00aa00" text-anchor="end">80%</text>
+    <rect x="12" y="100" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="100" width="277" height="6" rx="3" fill="#3178C6" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;277" dur="1.6s" begin="0.6s" fill="freeze"/>
     </rect>
   </g>
 
-  <!-- Column 4: DevOps -->
-  <g transform="translate(590, 50)">
-    <text x="0" y="18" font-size="11" fill="#00aa00" font-weight="bold">DevOps</text>
-    <rect x="0" y="26" width="180" height="2" fill="#003300"/>
-    <text x="0" y="44" font-size="10.5" fill="#00ff41" font-weight="bold">Docker</text>
-    <rect x="0" y="50" width="150" height="6" rx="3" fill="#001a00" stroke="#2496ED" stroke-width="1"/>
-    <rect x="0" y="50" width="150" height="6" rx="3" fill="#2496ED" opacity="0.9">
-      <animate attributeName="width" values="0;150" dur="1s" begin="0.1s"/>
+  <!-- Card: DevOps -->
+  <g transform="translate(410, 200)">
+    <rect x="0" y="0" width="370" height="130" rx="8" fill="#0d0716" stroke="#003300" stroke-width="1"/>
+    <rect x="0" y="0" width="370" height="24" rx="8" fill="#001a00"/>
+    <text x="12" y="17" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1">[ DevOps ]</text>
+    <circle cx="352" cy="12" r="4" fill="#00ff41" filter="url(#softGlow)">
+      <animate attributeName="fill-opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Docker -->
+    <text x="12" y="42" font-size="11" fill="#5eead4" font-weight="bold">Docker</text>
+    <text x="350" y="42" font-size="10" fill="#00aa00" text-anchor="end">90%</text>
+    <rect x="12" y="48" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="48" width="311" height="6" rx="3" fill="#2496ED" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;311" dur="1.2s" begin="0.2s" fill="freeze"/>
     </rect>
-    <text x="0" y="64" font-size="10.5" fill="#00ff41" font-weight="bold">Kubernetes</text>
-    <rect x="0" y="70" width="140" height="6" rx="3" fill="#001a00" stroke="#326CE5" stroke-width="1"/>
-    <rect x="0" y="70" width="140" height="6" rx="3" fill="#326CE5" opacity="0.9">
-      <animate attributeName="width" values="0;140" dur="1.2s" begin="0.2s"/>
+
+    <!-- Kubernetes -->
+    <text x="12" y="68" font-size="11" fill="#5eead4" font-weight="bold">Kubernetes</text>
+    <text x="350" y="68" font-size="10" fill="#00aa00" text-anchor="end">82%</text>
+    <rect x="12" y="74" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="74" width="284" height="6" rx="3" fill="#326CE5" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;284" dur="1.4s" begin="0.4s" fill="freeze"/>
     </rect>
-    <text x="0" y="84" font-size="10.5" fill="#00ff41" font-weight="bold">AWS</text>
-    <rect x="0" y="90" width="135" height="6" rx="3" fill="#001a00" stroke="#FF9900" stroke-width="1"/>
-    <rect x="0" y="90" width="135" height="6" rx="3" fill="#FF9900" opacity="0.9">
-      <animate attributeName="width" values="0;135" dur="1.4s" begin="0.3s"/>
+
+    <!-- AWS -->
+    <text x="12" y="94" font-size="11" fill="#5eead4" font-weight="bold">AWS</text>
+    <text x="350" y="94" font-size="10" fill="#00aa00" text-anchor="end">85%</text>
+    <rect x="12" y="100" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="100" width="294" height="6" rx="3" fill="#FF9900" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;294" dur="1.6s" begin="0.6s" fill="freeze"/>
     </rect>
-    <text x="0" y="104" font-size="10.5" fill="#00ff41" font-weight="bold">Terraform</text>
-    <rect x="0" y="110" width="130" height="6" rx="3" fill="#001a00" stroke="#7B42BC" stroke-width="1"/>
-    <rect x="0" y="110" width="130" height="6" rx="3" fill="#7B42BC" opacity="0.9">
-      <animate attributeName="width" values="0;130" dur="1.6s" begin="0.4s"/>
+
+    <!-- Terraform -->
+    <text x="12" y="120" font-size="11" fill="#5eead4" font-weight="bold">Terraform</text>
+    <text x="350" y="120" font-size="10" fill="#00aa00" text-anchor="end">78%</text>
+    <rect x="12" y="126" width="346" height="6" rx="3" fill="#001a00"/>
+    <rect x="12" y="126" width="270" height="6" rx="3" fill="#7B42BC" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;270" dur="1.8s" begin="0.8s" fill="freeze"/>
     </rect>
   </g>
 
   <!-- Footer -->
-  <rect x="20" y="368" width="760" height="20" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="400" y="382" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">SYSTEM OPERATIONAL</text>
+  <rect x="20" y="344" width="760" height="20" rx="4" fill="#001a00" opacity="0.5"/>
+  <text x="400" y="358" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">SYSTEM OPERATIONAL</text>
 </svg>
