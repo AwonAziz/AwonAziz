@@ -35,7 +35,7 @@ root@awon:~# cat contacts.md
 root@awon:~# cat stack.md
 ```
 
-![Tech Stack](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/tech-stack.svg?v=3)
+![Tech Stack](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/tech-stack.svg?v=4)
 
 ![Divider](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg?v=2)
 
