@@ -1,6 +1,6 @@
-![Awon Aziz — AI/MLOps Engineer](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/matrix-dark.svg)
+![Awon Aziz — AI/MLOps Engineer](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/matrix-dark.svg?v=2)
 
-![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg)
+![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal.svg?v=2)
 
 ```text
 root@awon:~# cat about.md
@@ -17,7 +17,7 @@ root@awon:~# cat about.md
 
 > `I build the operational half of machine learning.`
 
-![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg)
+![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=2)
 
 ```text
 root@awon:~# cat contacts.md
@@ -45,7 +45,7 @@ root@awon:~# cat stack.md
 | `DevOps / Cloud` | `Docker` `Kubernetes` `AWS` `Azure` `GCP` `GitHub Actions` `GitLab CI` |
 | `Tools` | `Git` `GitHub` `GitLab` `Postman` `Figma` `VS Code` |
 
-![Divider](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg)
+![Divider](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg?v=2)
 
 ```text
 root@awon:~# cat stats.md
@@ -53,10 +53,10 @@ root@awon:~# cat stats.md
 
 ### 📊 GitHub Stats & Graphs
 
-![Stats Overview](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/stats-overview.svg)
-![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg)
-![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg)
-![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg)
+![Stats Overview](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/stats-overview.svg?v=2)
+![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg?v=2)
+![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg?v=2)
+![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg?v=2)
 
 ![Contribution Snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
 
@@ -69,4 +69,4 @@ PROFILE_VIEWS=tracking&hellip;
 root@awon:~# echo "Always learning, always building."
 ```
 
-![Footer Wave](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg)
+![Footer Wave](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/divider.svg?v=2)
