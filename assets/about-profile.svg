@@ -1,4 +1,4 @@
-<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="About Me" font-family="Consolas, monospace">
+<svg width="800" height="340" viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="About Me" font-family="Consolas, monospace">
   <title>About Me - Awon Aziz</title>
   <defs>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -14,10 +14,10 @@
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="400" fill="#0a0713" rx="12"/>
-  <rect width="800" height="400" fill="url(#hexGrid)" rx="12"/>
-  <rect width="800" height="400" fill="url(#scanline)" rx="12"/>
-  <rect width="800" height="400" fill="none" stroke="#00ff41" stroke-width="1" rx="12" opacity="0.3"/>
+  <rect width="800" height="340" fill="#0a0713" rx="12"/>
+  <rect width="800" height="340" fill="url(#hexGrid)" rx="12"/>
+  <rect width="800" height="340" fill="url(#scanline)" rx="12"/>
+  <rect width="800" height="340" fill="none" stroke="#00ff41" stroke-width="1" rx="12" opacity="0.3"/>
 
   <!-- Title bar -->
   <rect x="1" y="1" width="798" height="32" rx="12" fill="#001a00" opacity="0.8"/>
@@ -70,8 +70,4 @@
   <rect x="410" y="292" width="370" height="40" rx="6" fill="#0d0716" stroke="#003300" stroke-width="1"/>
   <text x="422" y="308" font-size="10" fill="#ffbd6b" font-weight="bold">Fun Fact</text>
   <text x="422" y="324" font-size="10" fill="#cfc6e8">LoRA better calibrated than full FT (ECE 0.0180 vs 0.0306)</text>
-
-  <!-- Footer -->
-  <rect x="20" y="344" width="760" height="14" rx="3" fill="#001a00" opacity="0.5"/>
-  <text x="400" y="355" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold">OPERATIONALIZING ML, ONE GATE AT A TIME</text>
 </svg>

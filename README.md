@@ -2,7 +2,7 @@
 
 ![System Terminal](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/terminal-console.svg)
 
-![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/aboutme.svg?v=6)
+![About Me](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/about-profile.svg)
 
 ```text
 root@awon:~# cat contacts.md
