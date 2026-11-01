@@ -45,10 +45,10 @@ root@awon:~# cat stats.md
 
 ### 📊 GitHub Stats & Graphs
 
-![Stats Overview](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/stats-overview.svg?v=2)
-![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg?v=2)
-![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg?v=2)
-![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg?v=2)
+![Stats Overview](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/stats-overview.svg?v=3)
+![Languages](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/languages.svg?v=3)
+![Streak](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/streak.svg?v=3)
+![Contribution Graph](https://raw.githubusercontent.com/AwonAziz/AwonAziz/main/assets/contribution-graph.svg?v=3)
 
 ```text
 root@awon:~# cat views.md
