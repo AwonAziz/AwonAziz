@@ -60,7 +60,10 @@ root@awon:~# cat stats.md
 
 ![Contribution Snake](https://raw.githubusercontent.com/Platane/Platane/output/github-snake-pink.svg)
 
-![Profile Views](https://komarev.com/ghpvc/?username=AwonAziz&color=8A2BE2&style=for-the-badge&label=PROFILE+VIEWS)
+```text
+root@awon:~# cat views.md
+PROFILE_VIEWS=tracking&hellip;
+```
 
 ```text
 root@awon:~# echo "Always learning, always building."
