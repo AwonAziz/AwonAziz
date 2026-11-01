@@ -1,44 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="288" viewBox="0 0 400 288" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', 'Noto Sans Mono', monospace">
+<svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top Languages — Awon Aziz" font-family="'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace">
+  <title>Top Languages — Awon Aziz</title>
   <defs>
-    <linearGradient id="langBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#050505"/>
-    </linearGradient>
     <filter id="matrixGlow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="hexGrid" width="40" height="35" patternUnits="userSpaceOnUse">
+      <path d="M20,0 L40,10 L40,25 L20,35 L0,25 L0,10 Z" fill="none" stroke="#00ff41" stroke-opacity="0.04" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="scanline" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#00ff41" opacity="0.03"/>
+    </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="url(#langBg)" rx="8"/>
-  <rect width="100%" height="100%" rx="8" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
-  <rect x="20" y="16" width="360" height="24" rx="4" fill="#001a00" stroke="#003300" stroke-width="1"/>
-  <text x="28" y="33" font-size="12" fill="#00ff41" font-weight="bold" letter-spacing="1">TOP LANGUAGES</text>
-  
-    <rect x="0" y="64" width="260" height="18" rx="3" fill="#001a00" stroke="#3776AB" stroke-width="1"/>
-    <rect x="0" y="64" width="260" height="18" rx="3" fill="#3776AB" opacity="0.9"/>
-    <text x="6" y="78" font-size="11" fill="#000000" font-weight="bold">Python</text>
-    <text x="330" y="78" font-size="11" fill="#00ff41" text-anchor="end">62%</text>
-    <rect x="0" y="94" width="59" height="18" rx="3" fill="#001a00" stroke="#EE4C2C" stroke-width="1"/>
-    <rect x="0" y="94" width="59" height="18" rx="3" fill="#EE4C2C" opacity="0.9"/>
-    <text x="6" y="108" font-size="11" fill="#000000" font-weight="bold">TypeScript</text>
-    <text x="330" y="108" font-size="11" fill="#00ff41" text-anchor="end">14%</text>
-    <rect x="0" y="124" width="38" height="18" rx="3" fill="#001a00" stroke="#00AA00" stroke-width="1"/>
-    <rect x="0" y="124" width="38" height="18" rx="3" fill="#00AA00" opacity="0.9"/>
-    <text x="6" y="138" font-size="11" fill="#000000" font-weight="bold">Shell</text>
-    <text x="330" y="138" font-size="11" fill="#00ff41" text-anchor="end">9%</text>
-    <rect x="0" y="154" width="28" height="18" rx="3" fill="#001a00" stroke="#009688" stroke-width="1"/>
-    <rect x="0" y="154" width="28" height="18" rx="3" fill="#009688" opacity="0.9"/>
-    <text x="6" y="168" font-size="11" fill="#000000" font-weight="bold">HTML</text>
-    <text x="330" y="168" font-size="11" fill="#00ff41" text-anchor="end">7%</text>
-    <rect x="0" y="184" width="24" height="18" rx="3" fill="#001a00" stroke="#C471ED" stroke-width="1"/>
-    <rect x="0" y="184" width="24" height="18" rx="3" fill="#C471ED" opacity="0.9"/>
-    <text x="6" y="198" font-size="11" fill="#000000" font-weight="bold">Jupyter Notebook</text>
-    <text x="330" y="198" font-size="11" fill="#00ff41" text-anchor="end">6%</text>
-    <rect x="0" y="214" width="5" height="18" rx="3" fill="#001a00" stroke="#F7DF1E" stroke-width="1"/>
-    <rect x="0" y="214" width="5" height="18" rx="3" fill="#F7DF1E" opacity="0.9"/>
-    <text x="6" y="228" font-size="11" fill="#000000" font-weight="bold">CSS</text>
-    <text x="330" y="228" font-size="11" fill="#00ff41" text-anchor="end">1%</text>
-  <rect x="20" y="254" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="266" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">MACHINE LEARNING FOCUS</text>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0a0713" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#hexGrid)" rx="8"/>
+  <rect width="100%" height="100%" fill="url(#scanline)" rx="8"/>
+
+  <!-- Border -->
+  <rect width="100%" height="100%" fill="none" stroke="#00ff41" stroke-width="1" rx="8" opacity="0.25"/>
+
+  <!-- Matrix rain strip (right side, subtle) -->
+  <g opacity="0.10" transform="translate(360, 40)">
+    <text x="0" y="0" font-size="8" fill="#00ff41">
+      <animate attributeName="y" values="-40;240" dur="2.5s" calcMode="discrete" repeatCount="indefinite"/>
+      <tspan x="0" dy="10">1</tspan>
+      <tspan x="0" dy="10">0</tspan>
+      <tspan x="0" dy="10">1</tspan>
+      <tspan x="0" dy="10">0</tspan>
+    </text>
+    <text x="12" y="0" font-size="8" fill="#00ff41">
+      <animate attributeName="y" values="-50;240" dur="3s" begin="-0.8s" calcMode="discrete" repeatCount="indefinite"/>
+      <tspan x="12" dy="10">0</tspan>
+      <tspan x="12" dy="10">1</tspan>
+      <tspan x="12" dy="10">0</tspan>
+      <tspan x="12" dy="10">1</tspan>
+    </text>
+  </g>
+
+  <!-- Title bar -->
+  <rect x="1" y="1" width="398" height="28" rx="8" fill="#001a00" opacity="0.8"/>
+  <rect x="1" y="1" width="398" height="28" rx="8" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3"/>
+  <text x="16" y="20" font-size="11" fill="#00ff41" font-weight="bold" letter-spacing="1" filter="url(#softGlow)">TOP LANGUAGES</text>
+  <text x="380" y="20" font-size="9" fill="#00aa00" text-anchor="end" letter-spacing="1">REAL DATA</text>
+
+  <!-- Accent line under title -->
+  <line x1="16" y1="34" x2="384" y2="34" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
+  <rect x="16" y="33" width="80" height="2" fill="#00ff41" opacity="0.8">
+    <animate attributeName="width" values="0;80" dur="1s" begin="0.01s" fill="freeze"/>
+  </rect>
+
+  <!-- Language bars -->
+  <g transform="translate(16, 44)">
+    <!-- Python -->
+    <text x="0" y="14" font-size="10" fill="#5eead4" font-weight="bold">Python</text>
+    <text x="368" y="14" font-size="9" fill="#00ff41" text-anchor="end">62%</text>
+    <rect x="0" y="18" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="18" width="0" height="6" rx="3" fill="#3776AB" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;228" dur="1s" begin="0.01s" fill="freeze"/>
+    </rect>
+
+    <!-- TypeScript -->
+    <text x="0" y="38" font-size="10" fill="#5eead4" font-weight="bold">TypeScript</text>
+    <text x="368" y="38" font-size="9" fill="#00ff41" text-anchor="end">14%</text>
+    <rect x="0" y="42" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="42" width="0" height="6" rx="3" fill="#3178C6" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;52" dur="1.1s" begin="0.1s" fill="freeze"/>
+    </rect>
+
+    <!-- Shell -->
+    <text x="0" y="62" font-size="10" fill="#5eead4" font-weight="bold">Shell</text>
+    <text x="368" y="62" font-size="9" fill="#00ff41" text-anchor="end">9%</text>
+    <rect x="0" y="66" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="66" width="0" height="6" rx="3" fill="#00AA00" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;33" dur="1.2s" begin="0.2s" fill="freeze"/>
+    </rect>
+
+    <!-- HTML -->
+    <text x="0" y="86" font-size="10" fill="#5eead4" font-weight="bold">HTML</text>
+    <text x="368" y="86" font-size="9" fill="#00ff41" text-anchor="end">7%</text>
+    <rect x="0" y="90" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="90" width="0" height="6" rx="3" fill="#E34F26" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;26" dur="1.3s" begin="0.3s" fill="freeze"/>
+    </rect>
+
+    <!-- Jupyter Notebook -->
+    <text x="0" y="110" font-size="10" fill="#5eead4" font-weight="bold">Jupyter Notebook</text>
+    <text x="368" y="110" font-size="9" fill="#00ff41" text-anchor="end">6%</text>
+    <rect x="0" y="114" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="114" width="0" height="6" rx="3" fill="#C471ED" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;22" dur="1.4s" begin="0.4s" fill="freeze"/>
+    </rect>
+
+    <!-- CSS -->
+    <text x="0" y="134" font-size="10" fill="#5eead4" font-weight="bold">CSS</text>
+    <text x="368" y="134" font-size="9" fill="#00ff41" text-anchor="end">1%</text>
+    <rect x="0" y="138" width="368" height="6" rx="3" fill="#001a00"/>
+    <rect x="0" y="138" width="0" height="6" rx="3" fill="#F7DF1E" filter="url(#softGlow)">
+      <animate attributeName="width" values="0;4" dur="1.5s" begin="0.5s" fill="freeze"/>
+    </rect>
+  </g>
+
+  <!-- Footer -->
+  <rect x="16" y="256" width="368" height="14" rx="3" fill="#001a00" opacity="0.5"/>
+  <text x="200" y="267" text-anchor="middle" font-size="9" fill="#00aa00" font-weight="bold" letter-spacing="1">MACHINE LEARNING FOCUS</text>
 </svg>
