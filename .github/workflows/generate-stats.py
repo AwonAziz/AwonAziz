@@ -205,10 +205,10 @@ def generate_streak(user):
       <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite"/>
       <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
     </circle>
-    <text x="24" y="14" font-size="11" fill="#FF6EC7" font-weight="bold">{esc(user.get('bio', 'MLOps Engineer'))}</text>
+    <text x="24" y="14" font-size="11" fill="#FF6EC7" font-weight="bold">{esc(user.get('bio') or 'MLOps Engineer')}</text>
   </g>
   <rect x="20" y="128" width="360" height="16" rx="4" fill="#001a00" opacity="0.5"/>
-  <text x="200" y="140" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PROFILE: {esc(user.get('location', 'Islamabad, PK'))}</text>
+  <text x="200" y="140" text-anchor="middle" font-size="10" fill="#00aa00" font-weight="bold">PROFILE: {esc(user.get('location') or 'Islamabad, PK')}</text>
 </svg>'''
     return svg
 
